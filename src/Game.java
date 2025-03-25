@@ -37,12 +37,18 @@ public class Game {
     }
 
     public void registerPlayers(){
+        int playerNum = ui.promptNumeric("Type number of players");
+        if (playerNum >=2 && playerNum<=6 ) {
 
-     while(this.players.size() < this.maxPlayers) {
+            while (this.players.size() < this.maxPlayers) {
 
-        String playerName = ui.promptText("Tast spiller navn");
-        this.createPlayer(playerName, 0);
-     }
+                String playerName = ui.promptText("Tast spiller navn");
+                this.createPlayer(playerName, 0);
+            }
+        }else{
+
+            registerPlayers();
+        }
     }
 
 
