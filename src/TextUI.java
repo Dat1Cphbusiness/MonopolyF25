@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,13 +21,39 @@ public class TextUI {
         }
     }
 
-    public int promptNumeric(String msg){
+    public int promptNumeric(String msg) {
+        int numInput = 0;
+        boolean valid = false;
+
+        while (!valid) {
+            displayMessage(msg);  // Ask the user a question
+            String input = sc.nextLine();  // Get user input
+
+            try {
+                numInput = Integer.parseInt(input);  // Try converting to number
+                valid = true;  // If successful, mark as valid
+            } catch (NumberFormatException e) {
+                displayMessage("Skriv et gyldigt tal.");  // Error message, loop repeats
+            }
+        }
+        return numInput;  // Return the valid number
+    }
+
+    /* Med rekursion i stedet for while. Vi foretrækker den anden fordi metodekald kræver mere ram, da java laver en ny "stack frame" hver gang en metode kaldes
+       public int promptNumeric(String msg){
+        int numInput=0;
         System.out.println(msg);                      //Stille brugeren et spørgsmål
         String input = sc.nextLine();                 //Give brugere et sted at placere sit svar og vente på svaret
-        int numInput = Integer.parseInt(input);       //Konvertere svaret til et tal
 
+        try {
+             numInput = Integer.parseInt(input);       //Konvertere svaret til et tal
+
+        }catch(NumberFormatException e){
+             numInput = promptNumeric("Skriv et tal. "+msg); // vigtigt at lave den rekursive kald som en tildeling - ellers returneres numInput fra det oprindelige kald (hvor numInput jo var ugyldigt)
+        }
         return numInput;
     }
+     */
 
     public String promptText(String msg){
         System.out.println(msg);                //Stille brugeren et spørgsmål
