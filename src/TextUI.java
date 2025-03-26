@@ -47,17 +47,15 @@ public class TextUI {
 
     public boolean promptBinary(String msg) {
         String choice = this.promptText(msg);
-
         if(choice.equalsIgnoreCase("Y")){
 
             return true;
-        } else if (choice.equals("N")) {
+        } else if (choice.equalsIgnoreCase("N")) {
 
             return false;
 
         }
-
-        return false;
+        return promptBinary("Du har ikke tastet y eller n, prøv igen");
     }
 
     public void displayMessage(String msg) {

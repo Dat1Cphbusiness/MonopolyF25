@@ -95,6 +95,7 @@ public class Game {
     public void runGameLoop(){
         int counter = 0;
         boolean continueGame = true;
+
         while(continueGame){
         currentPlayer=players.get(counter);
         throwAndMove();
