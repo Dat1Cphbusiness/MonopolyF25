@@ -45,6 +45,7 @@ public class Game {
     public void registerPlayers() {
 
         int playerNumber = ui.promptNumeric("Hvor mange antal spillere er med?: ");
+
         if (playerNumber > 6 || playerNumber < 2) {
             ui.displayMessage("Indtast venligst et tal mellem 2 og 6");
             registerPlayers();
@@ -88,7 +89,7 @@ public class Game {
     }
 
     public void runGameLoop(){
-        currentPlayer = players.getFirst().getName();
+        currentPlayer = players.get(0).toString();
         ui.displayMessage("Den nuværende spiller er: " + currentPlayer);
     }
 }
