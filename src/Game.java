@@ -76,6 +76,7 @@ public class Game {
 
     public void endSession() {
         ArrayList<String> playerData = new ArrayList<>();
+        ui.displayMessage("Spillet afsluttes!");
 
      //serialiserer player objekterner
         for(Player p: players){
@@ -91,9 +92,28 @@ public class Game {
 
 
     public void runGameLoop(){
-        currentPlayer=players.get(0);
-        ui.displayMessage("It's this players turn to pick: "+currentPlayer.getName());
+        int counter = 0;
+        boolean continueGame = true;
+        while(continueGame){
+        currentPlayer=players.get(counter);
+        throwAndMove();
+        continueGame = ui.promptBinary("Forsæt? y/n");
+        counter++;
 
+        if (this.players.size() == counter){
+            counter = 0;
+        }
+        }
+
+
+    }
+
+    private void throwAndMove(){
+        ui.displayMessage("It's this players turn to pick: "+currentPlayer.getName());
+    }
+
+    private void landAndAct(){
+        //Tom metode
     }
 
 }
