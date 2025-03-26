@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class Game {
+public class Game{
     static TextUI ui = new TextUI();
     static FileIO io = new FileIO();
 
@@ -36,20 +36,21 @@ public class Game {
         displayPlayers();
     }
 
-    public void registerPlayers() {
-
-        int value = ui.promptNumeric("Antal spillere?");
-        if(value <= 6 && value >= 2){
-            while (0 < value && this.maxPlayers >= value) {
-                String playerName = ui.promptText("Tast spiller navn");
-                this.createPlayer(playerName, 0);
-                value--;
+    public void registerPlayers(){
+        
+            int value = ui.promptNumeric("Antal spillere?");
+            if (value <= 6 && value >= 2) {
+                while (0 < value) {
+                    String playerName = ui.promptText("Tast spiller navn");
+                    this.createPlayer(playerName, 0);
+                    value--;
+                }
+                Collections.shuffle(players);
+            } else {
+                ui.displayMsg("Vælg mellem 2-6 spillere");
+                registerPlayers();
             }
-        } else {
-            ui.displayMsg("Forkert antal spillere");
-            registerPlayers();
-        }
-        Collections.shuffle(players);
+
     }
 
 
@@ -82,6 +83,6 @@ public class Game {
 
     public void runGameLoop(){
         currentPlayer = players.get(0);
-        ui.displayMsg("Det er " + currentPlayer + "'s tur");
+        ui.displayMsg("Det er " + currentPlayer.getPlayerName() + "'s tur");
     }
 }

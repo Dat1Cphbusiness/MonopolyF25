@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+skinparam actorStyle awesome
+actor user
+
+usecase "ThrowAndMove"
+usecase "StartGame"
+usecase "EndGame"
+usecase "RegisterPlayers"
+usecase "LandAndAct"
+
+user --> "StartGame"
+"StartGame" --> "RegisterPlayers"
+"RegisterPlayers" --> "ThrowAndMove"
+"ThrowAndMove" --> "LandAndAct"
+"ThrowAndMove" --> "EndGame"
+
+@enduml

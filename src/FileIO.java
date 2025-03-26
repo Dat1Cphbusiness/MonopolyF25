@@ -7,13 +7,9 @@ import java.util.Scanner;
 
 public class FileIO {
 
-
-
     public void saveData(ArrayList<String> list, String path, String header){
         try {
             FileWriter writer = new FileWriter(path);
-
-
 
             writer.write(header+"\n");
             for (String s : list) {
