@@ -1,0 +1,31 @@
+@startuml
+
+actor user
+
+usecase "ThrowAndMove" as UC1
+usecase "StartGame" as UC2
+usecase "EndGame" as UC3
+usecase "RegisterPlayers" as UC4
+usecase "LandAndAct" as UC5
+usecase "WithdrawMoney" as UC6
+usecase "LandOnProperty" as UC7
+usecase "LandOnChance" as UC8
+usecase "LandOnTax" as UC9
+
+user --> (UC2)
+(UC2) --> (UC4)
+(UC4) --> (UC1)
+(UC1) --> (UC5)
+(UC5) --> (UC7)
+(UC5) --> (UC8)
+(UC5) --> (UC9)
+(UC7) --> (UC6)
+(UC9) --> (UC6)
+(UC5) --> (UC1)
+(UC3) --> (UC4)
+(UC6) --> (UC3)
+(UC1) --> (UC3)
+
+
+
+@enduml
