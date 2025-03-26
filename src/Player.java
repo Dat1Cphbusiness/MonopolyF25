@@ -11,10 +11,11 @@ public class Player {
     public String toString(){
         return name + ", "+ score;
     }
-
-    public String getName(){
+    String getName(){
         return name;
     }
+
+
 
 
 }

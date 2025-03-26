@@ -83,7 +83,9 @@ public class Game {
           String s = p.toString();
           playerData.add(s);
 
+
       }
+        ui.displayMessage("Spillet er afsluttet!");
         //Test om promptChoice virker
         //ui.displayList(ui.promptChoice(playerData, 3, "vælg en spiller"), "Din spiller liste");
         io.saveData(playerData, "data/playerData.csv", "Name, Score");
@@ -91,9 +93,26 @@ public class Game {
 
 
     public void runGameLoop(){
-        currentPlayer=players.get(0);
-        ui.displayMessage("It's this players turn to pick: "+currentPlayer.getName());
 
+        boolean continueGame = true;
+        while(continueGame) {
+
+            currentPlayer = players.get(count);
+            ui.displayMessage("It's this players turn to pick: " + currentPlayer.getName());
+            throwAndMove();
+            landAndAct(count);
+            continueGame = ui.promptBinary("fortsæt? (Y/N)");
+
+            if(continueGame){
+                count++;
+
+                if (count >= players.size()) {
+                    count = 0;
+                }
+                runGameLoop();
+            }
+            break;
+        }
     }
 
 }

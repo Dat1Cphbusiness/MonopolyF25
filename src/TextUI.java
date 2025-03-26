@@ -3,6 +3,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class TextUI {
 
     Scanner sc = new Scanner(System.in);
@@ -51,17 +52,18 @@ public class TextUI {
         if(choice.equalsIgnoreCase("Y")){
 
             return true;
-        } else if (choice.equals("N")) {
+        } else if (choice.equalsIgnoreCase("N")) {
 
             return false;
 
+        }else{
+            promptBinary(msg);
         }
 
-        return false;
+        return true;
     }
 
     public void displayMessage(String msg) {
         System.out.println(msg);
-
     }
 }
