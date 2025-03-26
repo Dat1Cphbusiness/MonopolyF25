@@ -12,6 +12,7 @@ usecase "LandAndAct"
 
 user --> "StartGame"
 "StartGame" --> "RegisterPlayers"
+"StartGame" --> "ThrowAndMove"
 "RegisterPlayers" --> "ThrowAndMove"
 "ThrowAndMove" --> "LandAndAct"
 "ThrowAndMove" --> "EndGame"
