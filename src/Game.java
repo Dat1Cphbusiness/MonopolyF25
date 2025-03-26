@@ -46,6 +46,7 @@ public class Game {
         } catch (NumberFormatException e) {
             ui.displayMessage("Wrong input.. Please try again.");
             registerPlayers();
+            return;
         }
 
 
