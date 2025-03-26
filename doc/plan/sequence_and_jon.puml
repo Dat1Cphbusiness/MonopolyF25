@@ -1,0 +1,20 @@
+@startuml
+
+'By Andreas & Jonas
+
+'Sequence Diagram
+Game -> Game: setup
+Game -> FileIO: String[] fielddata = readBoardData("fields.csv")
+Game -> Board: new(fielddata)
+Board -> Board: createField(data)
+loop
+Board -> Field: new(id, label, cost, income)
+end
+Game -> FileIO: String[] carddata = readBoardData("cards.csv")
+Game -> CardDeck: new(carddata)
+CardDeck -> CardDeck: createCards(data)
+loop
+CardDeck -> Card: new(message, income, cost, event)
+end
+
+@enduml

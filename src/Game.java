@@ -9,6 +9,7 @@ public class Game {
     private int maxPlayers ;
     private ArrayList<Player> players;
     private Player currentPlayer;
+    private int totalPlayers; // To fix recursion error
 
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -39,8 +40,6 @@ public class Game {
 
     public void registerPlayers(){
 
-        int totalPlayers = 0;
-
         try {
             totalPlayers = ui.promptNumeric("Number of players:");       //Konvertere svaret til et tal
         } catch (NumberFormatException e) {
@@ -48,19 +47,18 @@ public class Game {
             registerPlayers();
         }
 
+        if(totalPlayers > this.maxPlayers || totalPlayers < 2){
+            System.out.println("Your input number was higher or lower than the allowed " + this.maxPlayers + " players");
+            registerPlayers();
+        }
 
-    if(totalPlayers > this.maxPlayers || totalPlayers < 2){
-        System.out.println("Your input number was higher than the allowed " + this.maxPlayers + " players");
-        registerPlayers();
-    }
+         while(this.players.size() < totalPlayers) {
+            String playerName = ui.promptText("Tast spiller navn");
+            this.createPlayer(playerName, 0);
+         }
 
-     while(this.players.size() < totalPlayers) {
-        String playerName = ui.promptText("Tast spiller navn");
-        this.createPlayer(playerName, 0);
-     }
-
-     Collections.shuffle(this.players);
-    }
+         Collections.shuffle(this.players);
+        }
 
 
     private void createPlayer(String name, int score){
