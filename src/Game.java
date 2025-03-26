@@ -20,13 +20,19 @@ public class Game {
 
     public void startSession(){
         ArrayList<String> data = io.readData("data/playerData.csv");
+
         ui.displayMessage("Velkommen til "+ this.name);
 
+       // {"tess, 200", "tine, 30000", "Jesper, 30"}
+
+
         if(!data.isEmpty() && ui.promptBinary("would your like to continue previous game: Y/N")){
+
             for(String s : data){
-              String[] values =  s.split(",");//  "tess, 0"
+              String[] values =  s.split(",");//  "tess, 200"
+                String name = values[0];
                 int score = Integer.parseInt(values[1].trim());
-               createPlayer(values[0],score);
+               createPlayer(name,score);
             }
 
         }else{
@@ -46,6 +52,7 @@ public class Game {
         } catch (NumberFormatException e) {
             ui.displayMessage("Wrong input.. Please try again.");
             registerPlayers();
+
         }
 
 
