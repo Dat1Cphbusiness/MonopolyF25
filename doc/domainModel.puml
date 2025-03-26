@@ -1,0 +1,55 @@
+@startuml
+
+object Bank
+object Board
+object Brewery
+object Building
+object Business
+object Card
+object Chance
+object Deed
+object Dice
+object Field
+object Game
+object Parking
+object Player
+object Plot
+object Prison
+object Property
+object Rules
+object Start
+object ShippingLine
+object Tax
+object Visit
+
+Game *-- Board
+Game *-- "3...6" Player
+Game *-- Rules
+
+
+Player *-- "2" Dice
+Player *-- Card
+Player *-- Deed
+
+Board *-- "40" Field : has-a
+Board *-- Card
+
+Field <|-- "1" Visit
+Field <|-- "2" Tax
+Field <|-- "1" Parking
+Field <|-- "1" Start
+Field <|-- "6" Chance
+Field <|-- "28" Property
+Field <|-- "1" Prison
+
+Property <|-- "22" Plot
+Property <|-- "4" ShippingLine
+Property <|-- "2" Brewery
+Property *-- Deed
+
+Plot *-- "0...5" Building
+
+@enduml
+
+NewYork --> CapitalCity::USA
+@enduml
