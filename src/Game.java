@@ -46,7 +46,6 @@ public class Game {
                     this.createPlayer(playerName, 0);
                     value--;
                 }
-                Collections.shuffle(players);
             } else {
                 ui.displayMsg("Vælg mellem 2-6 spillere");
                 registerPlayers();
@@ -55,7 +54,7 @@ public class Game {
             ui.displayMsg("Indtast et tal mellem 2-6");
             registerPlayers();
         }
-
+        Collections.shuffle(players);
     }
 
 
