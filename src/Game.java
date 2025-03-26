@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
    static TextUI ui = new TextUI();
@@ -11,6 +9,8 @@ public class Game {
     private String name;
     private int maxPlayers;
     private ArrayList<Player> players;
+    public Player currentPlayer;
+
 
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -22,8 +22,8 @@ public class Game {
     public void startSession(){
         ui.displayMsg("Velkommen til Matador");
         ArrayList<String> data = io.readData("data/playerData.csv");
-        if(!data.isEmpty()){
-            ui.promptBinary("Continue previously saved game? Y/N");
+        if(!data.isEmpty() && ui.promptBinary("Continue previously saved game? Y/N")){
+
             for(String s : data){
               String[] values =  s.split(",");//  "tess, 0"
                 int score = Integer.parseInt(values[1].trim());
@@ -33,21 +33,21 @@ public class Game {
         }else{
             registerPlayers();
         }
+        Collections.shuffle(players);
         displayPlayers();
     }
 
     public void registerPlayers(){
         int playerNum = ui.promptNumeric("Type number of players");
-        if (playerNum >=2 && playerNum<=6 ) {
-
-            while (this.players.size() < this.maxPlayers) {
-
-                String playerName = ui.promptText("Tast spiller navn");
-                this.createPlayer(playerName, 0);
-            }
-        }else{
+        if (playerNum >=2 && playerNum <=6 ) {
 
             registerPlayers();
+        }
+
+        while (playerNum > this.players.size()) {
+
+            String playerName = ui.promptText("Tast spiller navn");
+            this.createPlayer(playerName, 0);
         }
     }
 
@@ -76,5 +76,9 @@ public class Game {
         //Test om promptChoice virker
         //ui.displayList(ui.promptChoice(playerData, 3, "vælg en spiller"), "Din spiller liste");
         io.saveData(playerData, "data/playerData.csv", "Name, Score");
+    }
+    public void runGameLoop(){
+        currentPlayer = players.get(0);
+        ui.displayMsg("Det er "+ currentPlayer.getName()+ "'s tur");
     }
 }

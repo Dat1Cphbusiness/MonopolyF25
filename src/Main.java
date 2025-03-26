@@ -12,10 +12,11 @@ public class Main {
 
         Game g = new Game("Matador",3);
         g.startSession();
-
+        g.runGameLoop();
         // run the game loop
 
 
         g.endSession();
+
     }
 }
