@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class Game{
+public class Game {
     static TextUI ui = new TextUI();
     static FileIO io = new FileIO();
 
@@ -36,8 +36,9 @@ public class Game{
         displayPlayers();
     }
 
-    public void registerPlayers(){
-        
+    public void registerPlayers() {
+
+        try {
             int value = ui.promptNumeric("Antal spillere?");
             if (value <= 6 && value >= 2) {
                 while (0 < value) {
@@ -50,6 +51,10 @@ public class Game{
                 ui.displayMsg("Vælg mellem 2-6 spillere");
                 registerPlayers();
             }
+        } catch (NumberFormatException e) {
+            ui.displayMsg("Indtast et tal mellem 2-6");
+            registerPlayers();
+        }
 
     }
 
@@ -81,7 +86,7 @@ public class Game{
         io.saveData(playerData, "data/playerData.csv", "Name, Score");
     }
 
-    public void runGameLoop(){
+    public void runGameLoop() {
         currentPlayer = players.get(0);
         ui.displayMsg("Det er " + currentPlayer.getPlayerName() + "'s tur");
     }
