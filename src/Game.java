@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 public class Game {
     static TextUI ui = new TextUI();
     static FileIO io = new FileIO();
@@ -14,9 +13,7 @@ public class Game {
         this.name = name;
         this.maxPlayers = maxPlayers;
         players = new ArrayList<>();
-
     }
-
 
     public void startSession(){
         ArrayList<String> data = io.readData("data/playerData.csv");
@@ -28,17 +25,13 @@ public class Game {
                 int score = Integer.parseInt(values[1].trim());
                createPlayer(values[0],score);
             }
-
         }else{
-
             registerPlayers();
         }
         displayPlayers();
     }
 
-
     public void registerPlayers(){
-
         int totalPlayers = 0;
 
         try {
@@ -47,7 +40,6 @@ public class Game {
             ui.displayMessage("Wrong input.. Please try again.");
             registerPlayers();
         }
-
 
     if(totalPlayers > this.maxPlayers || totalPlayers < 2){
         System.out.println("Your input number was higher than the allowed " + this.maxPlayers + " players");
@@ -58,7 +50,6 @@ public class Game {
         String playerName = ui.promptText("Tast spiller navn");
         this.createPlayer(playerName, 0);
      }
-
      Collections.shuffle(this.players);
     }
 
@@ -71,7 +62,6 @@ public class Game {
         for(Player p:players){
             System.out.println(p);
         }
-
     }
 
     public void runGameLoop(){
@@ -93,14 +83,10 @@ public class Game {
     public void endSession() {
         ArrayList<String> playerData = new ArrayList<>();
 
-     //serialiserer player objekterner
         for(Player p: players){
-
           String s = p.toString();
           playerData.add(s);
-
       }
-        //Test om promptChoice virker
         //ui.displayList(ui.promptChoice(playerData, 3, "vælg en spiller"), "Din spiller liste");
         io.saveData(playerData, "data/playerData.csv", "Name, Score");
         ui.displayMessage("Spillet er gemt og afsluttet.");
