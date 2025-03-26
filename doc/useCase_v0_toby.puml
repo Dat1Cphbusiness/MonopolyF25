@@ -1,0 +1,35 @@
+@startuml
+!pragma Layout smetana
+'https://plantuml.com/use-case-diagram
+
+usecase "StartGame" as UC1
+usecase "RegisterPlayers" as UC2
+usecase "ThrowAndMove" as UC3
+usecase "LandAndAct" as UC4
+usecase "endGame" as UC5
+usecase "WithdrawMoney" as UC6
+usecase "LandOnProperty" as UC7
+usecase "LandOnChance" as UC8
+usecase "LandOnTax" as UC9
+
+
+User -> (UC1)
+UC1 --> (UC2)
+
+UC2 --> (UC3)
+UC5 -> (UC2)
+
+UC3 --> (UC4)
+UC4 --> (UC3)
+UC3 -> (UC5)
+
+UC4 --> (UC7)
+UC4 --> (UC8)
+UC4 --> (UC9)
+
+UC7 --> (UC6)
+UC9 --> (UC6)
+
+UC6 --> (UC5)
+
+@enduml
