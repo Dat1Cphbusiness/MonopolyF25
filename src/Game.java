@@ -41,16 +41,12 @@ public class Game {
 
         int totalPlayers = 0;
 
-        try {
-            totalPlayers = ui.promptNumeric("Number of players:");       //Konvertere svaret til et tal
-        } catch (NumberFormatException e) {
-            ui.displayMessage("Wrong input.. Please try again.");
-            registerPlayers();
-        }
+        totalPlayers = ui.promptNumeric("Tast antal spillere:");       //Konvertere svaret til et tal
 
 
-    if(totalPlayers > this.maxPlayers || totalPlayers < 2){
-        System.out.println("Your input number was higher than the allowed " + this.maxPlayers + " players");
+
+    if(totalPlayers > this.maxPlayers || totalPlayers < 2){ // vi kan evt. udvide promptNumeric med parametre til og min og max værdier (eller bruge overloading)
+        ui.displayMessage("Antal spillere skal være mindst 2 og højest "+ this.maxPlayers);
         registerPlayers();
     }
 
