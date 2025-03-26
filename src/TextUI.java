@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class TextUI {
 
-
     Scanner sc = new Scanner(System.in);
 
     public ArrayList<String> promptChoice( ArrayList<String> options, int limit, String msg){
@@ -26,8 +25,6 @@ public class TextUI {
         for (int i = 0; i < list.size();i++) {
             System.out.println(i+1+". "+list.get(i));
         }
-
-
     }
 
     public int promptNumeric(String msg){
@@ -45,23 +42,19 @@ public class TextUI {
         return input;
     }
 
-    public boolean promptBinary(String msg) {
-        String choice = this.promptText(msg);
-
-        if(choice.equalsIgnoreCase("Y")){
-
-            return true;
-        } else if (choice.equals("N")) {
-
-            return false;
-
-        }
-
-        return false;
+    public void displayMsg(String msg){
+        System.out.println(msg);
     }
 
-    public void displayMessage(String msg) {
-        System.out.println(msg);
+    public boolean promptBinary(String msg){
+        System.out.println(msg);//Stille brugeren et spørgsmål
+        String input = sc.nextLine();          //Give brugere et sted at placere sit svar og vente på svaret
 
+        if(input.equalsIgnoreCase("n")){
+            return false;
+        } else if(input.equalsIgnoreCase("y")){
+            return true;
+        }
+        return promptBinary(msg);
     }
 }
