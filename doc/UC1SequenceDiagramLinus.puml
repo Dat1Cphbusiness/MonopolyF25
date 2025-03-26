@@ -2,9 +2,9 @@
 'https://plantuml.com/sequence-diagram
 
 
-
-Game -> FileIO: Authentication Request
-Game -> Board: Authentication Response
+Game -> Game: setup
+Game -> FileIO: String[] fielddata = readBoardData("fields.csv")
+Game -> Board: new(fielddata)
 Board -> Board: createFields(data)
 loop data.length
 Board -> Field: new (id, label, cost, income)
