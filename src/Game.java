@@ -38,7 +38,6 @@ public class Game {
 
 
     public void registerPlayers(){
-
         int totalPlayers = 0;
 
         try {
@@ -48,18 +47,15 @@ public class Game {
             registerPlayers();
         }
 
-
-    if(totalPlayers > this.maxPlayers || totalPlayers < 2){
-        System.out.println("Your input number was higher than the allowed " + this.maxPlayers + " players");
-        registerPlayers();
-    }
-
-     while(this.players.size() < totalPlayers) {
+        if(totalPlayers > this.maxPlayers || totalPlayers < 2){
+            System.out.println("Your input number was higher than the allowed " + this.maxPlayers + " players");
+            registerPlayers();
+        }
+        while(this.players.size() < totalPlayers) {
         String playerName = ui.promptText("Tast spiller navn");
         this.createPlayer(playerName, 0);
-     }
-
-     Collections.shuffle(this.players);
+        }
+        Collections.shuffle(this.players);
     }
 
 
