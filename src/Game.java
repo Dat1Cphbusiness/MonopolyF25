@@ -19,7 +19,6 @@ public class Game {
 
     }
 
-
     public void startSession(){
         ArrayList<String> data = io.readData("data/playerData.csv");
         ui.displayMessage("Velkommen til "+ this.name);
