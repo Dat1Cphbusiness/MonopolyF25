@@ -7,9 +7,11 @@
 usecase ThrowAndMove
 usecase LandAndAct
 usecase endGame
-usecase buy
+usecase LandOnProperty
 usecase moneyWithDrawl
 usecase goToJail
+usecase LandOnChance
+usecase LandOnTax
 
 player as actor
 player --> (StartGame)
@@ -19,9 +21,13 @@ player --> (StartGame)
 ThrowAndMove --> LandAndAct
 endGame --> (RegisterPlayers)
 LandAndAct --> ThrowAndMove
-LandAndAct --> buy
+LandAndAct --> LandOnProperty
 LandAndAct --> goToJail
-buy --> moneyWithDrawl
+LandAndAct --> LandOnChance
+LandAndAct --> LandOnTax
+LandOnProperty --> moneyWithDrawl
+LandOnTax --> moneyWithDrawl
+moneyWithDrawl --> endGame
 
 
 
