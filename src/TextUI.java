@@ -1,3 +1,5 @@
+
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,9 +25,12 @@ public class TextUI {
         for (int i = 0; i < list.size();i++) {
             System.out.println(i+1+". "+list.get(i));
         }
+
+
     }
 
     public int promptNumeric(String msg){
+
         System.out.println(msg);//Stille brugeren et spørgsmål
         String input = sc.nextLine();          //Give brugere et sted at placere sit svar og vente på svaret
         int numInput = Integer.parseInt(input);       //Konvertere svaret til et tal
@@ -40,19 +45,23 @@ public class TextUI {
         return input;
     }
 
-    public void displayMsg(String msg){
-        System.out.println(msg);
+    public boolean promptBinary(String msg) {
+        String choice = this.promptText(msg);
+
+        if(choice.equalsIgnoreCase("Y")){
+
+            return true;
+        } else if (choice.equals("N")) {
+
+            return false;
+
+        }
+
+        return false;
     }
 
-    public boolean promptBinary(String msg){
-        System.out.println(msg);//Stille brugeren et spørgsmål
-        String input = sc.nextLine();          //Give brugere et sted at placere sit svar og vente på svaret
+    public void displayMessage(String msg) {
+        System.out.println(msg);
 
-        if(input.equalsIgnoreCase("n")){
-            return false;
-        } else if(input.equalsIgnoreCase("y")){
-            return true;
-        }
-        return promptBinary(msg);
     }
 }
