@@ -15,9 +15,10 @@ usecase "LandOnTax" as UC9
 
 User -> (UC1)
 UC1 --> (UC2)
+UC1 --> (UC3)
 
 UC2 --> (UC3)
-UC5 -> (UC2)
+UC5 -> (UC1)
 
 UC3 --> (UC4)
 UC4 --> (UC3)
