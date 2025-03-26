@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Main User: as u
+:Players: as u1
+usecase "StartGame" as UC1
+usecase "RegisterPlayers" as UC2
+usecase "Throw and move" as UC3
+usecase "LandAndAct" as UC4
+usecase "EndGame" as UC5
+package TurnActions {
+usecase "Buy deed" as PUC1
+usecase "Pay tax" as PUC2
+usecase "Pawn deed" as PUC3
+usecase "Draw and enact chance card" as PUC4
+usecase "Pay player"
+}
+
+u --> UC1
+UC1 --> UC2 #line.dotted
+UC1 --> UC3
+u1 --> UC4
+u1 --> TurnActions #line.dotted
+UC2 --> UC3
+UC3 --> UC4
+UC4 --> UC3
+UC4 --> UC5
+
+
+@enduml
