@@ -3,7 +3,7 @@
 * Game har en eller flere Players.
 * Spillere bliver oprettet ved kald til registerPlayers, som starter en dialog med brugeren
 * todo: integrer TextUI
-* todo: Byg FileIO
+* todo: Byg FileIOn
 * */
 
 public class Main {

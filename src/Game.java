@@ -1,15 +1,19 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 public class Game {
+
+    private String name;
+    private int maxPlayers;
+    private ArrayList<Player> players;
     static TextUI ui = new TextUI();
     static FileIO io = new FileIO();
-    private String name;
-    private int maxPlayers ;
-    private ArrayList<Player> players;
     private Player currentPlayer;
+
+    // Our own local attribute
     private int totalPlayers; // To fix recursion error
+
+    // _______________________________________________________________
 
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -18,6 +22,7 @@ public class Game {
 
     }
 
+    // _______________________________________________________________
 
     public void startSession(){
         ArrayList<String> data = io.readData("data/playerData.csv");
@@ -37,6 +42,7 @@ public class Game {
         displayPlayers();
     }
 
+    // _______________________________________________________________
 
     public void registerPlayers(){
 
@@ -60,11 +66,15 @@ public class Game {
          Collections.shuffle(this.players);
         }
 
+    // _______________________________________________________________
 
     private void createPlayer(String name, int score){
         Player p = new Player(name, score);
         players.add(p);
     }
+
+    // _______________________________________________________________
+
     public void displayPlayers(){
         for(Player p:players){
             System.out.println(p);
@@ -72,10 +82,14 @@ public class Game {
 
     }
 
+    // _______________________________________________________________
+
     public void endSession() {
         ArrayList<String> playerData = new ArrayList<>();
 
-     //serialiserer player objekterner
+        System.out.println("\nSpillet afsluttes.. Tak for spillet!");
+
+        //serialiserer player objekterner
         for(Player p: players){
 
           String s = p.toString();
@@ -87,11 +101,37 @@ public class Game {
         io.saveData(playerData, "data/playerData.csv", "Name, Score");
     }
 
+    // _______________________________________________________________
 
     public void runGameLoop(){
-        currentPlayer=players.get(0);
-        ui.displayMessage("It's this players turn to pick: "+currentPlayer.getName());
+        int counter = 0;
+        boolean continueGame = true;
+
+        while(continueGame){
+            currentPlayer=players.get(counter);
+            ui.displayMessage("It's this players turn to pick: "+currentPlayer.getName());
+            this.throwAndMove();
+            // true : false
+            counter = counter == players.size()-1 ? 0 : counter+1;
+
+            continueGame = ui.promptBinary("Fortsæt..? Y/N");
+
+        }
 
     }
+
+    // _______________________________________________________________
+
+    private void throwAndMove(){
+
+
+    }
+
+    // _______________________________________________________________
+
+    private void landAndAct(){
+
+    }
+
 
 }
