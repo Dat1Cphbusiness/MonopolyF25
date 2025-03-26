@@ -22,7 +22,7 @@ public class Game {
         ArrayList<String> data = io.readData("data/playerData.csv");
         ui.displayMessage("Velkommen til "+ this.name);
 
-        if(!data.isEmpty() && ui.promptBinary("would your like to continue previous game: Y/N")){
+        if(!data.isEmpty() && ui.promptBinary("Vil du forsætte det gamle spil: y/n")){
             for(String s : data){
               String[] values =  s.split(",");//  "tess, 0"
                 int score = Integer.parseInt(values[1].trim());
@@ -42,10 +42,11 @@ public class Game {
         int totalPlayers = 0;
 
         try {
-            totalPlayers = ui.promptNumeric("Number of players:");       //Konvertere svaret til et tal
+            totalPlayers = ui.promptNumeric("Antal spillere:");       //Konvertere svaret til et tal
         } catch (NumberFormatException e) {
             ui.displayMessage("Wrong input.. Please try again.");
             registerPlayers();
+            return;
         }
 
 
