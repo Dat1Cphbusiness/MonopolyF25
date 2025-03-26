@@ -1,14 +1,10 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class Game {
-   static TextUI ui = new TextUI();
-   static FileIO io = new FileIO();
-
-
-
+    static TextUI ui = new TextUI();
+    static FileIO io = new FileIO();
     private String name;
     private int maxPlayers ;
     private ArrayList<Player> players;
@@ -53,13 +49,12 @@ public class Game {
         }
 
 
-    if(totalPlayers > this.maxPlayers || totalPlayers < 0){
+    if(totalPlayers > this.maxPlayers || totalPlayers < 2){
         System.out.println("Your input number was higher than the allowed " + this.maxPlayers + " players");
         registerPlayers();
     }
 
      while(this.players.size() < totalPlayers) {
-
         String playerName = ui.promptText("Tast spiller navn");
         this.createPlayer(playerName, 0);
      }
@@ -94,9 +89,6 @@ public class Game {
         io.saveData(playerData, "data/playerData.csv", "Name, Score");
     }
 
-    public String getPlayerName(){
-        return currentPlayer.getName();
-    }
 
     public void runGameLoop(){
         currentPlayer=players.get(0);
