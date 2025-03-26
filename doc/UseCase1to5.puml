@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+
+(StartGame)
+(RegisterPlayers) as (UC2)
+usecase ThrowAndMove
+usecase LandAndAct
+usecase endGame
+usecase buy
+usecase moneyWithDrawl
+usecase goToJail
+
+player as actor
+player --> (StartGame)
+(StartGame) --> (RegisterPlayers)
+(RegisterPlayers) --> (ThrowAndMove)
+(ThrowAndMove) -> endGame
+ThrowAndMove --> LandAndAct
+endGame --> (RegisterPlayers)
+LandAndAct --> ThrowAndMove
+LandAndAct --> buy
+LandAndAct --> goToJail
+buy --> moneyWithDrawl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
