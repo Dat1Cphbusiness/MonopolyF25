@@ -46,12 +46,14 @@ public class Game {
         } catch (NumberFormatException e) {
             ui.displayMessage("Wrong input.. Please try again.");
             registerPlayers();
+            return;
         }
 
 
     if(totalPlayers > this.maxPlayers || totalPlayers < 2){
         System.out.println("Your input number was higher than the allowed " + this.maxPlayers + " players");
         registerPlayers();
+        return;
     }
 
      while(this.players.size() < totalPlayers) {
@@ -76,7 +78,7 @@ public class Game {
 
     public void endSession() {
         ArrayList<String> playerData = new ArrayList<>();
-
+        ui.displayMessage("Spillet afsluttes");
      //serialiserer player objekterner
         for(Player p: players){
 
@@ -91,8 +93,27 @@ public class Game {
 
 
     public void runGameLoop(){
-        currentPlayer=players.get(0);
+        int count = 0;
+        boolean continueGame = true;
+
+        while (continueGame) {
+            currentPlayer=players.get(count);
+            throwAndMove();
+            count++;
+
+            continueGame = ui.promptBinary("Fortsæt? (Y/N)");
+
+            if (count >= players.size()) {
+                count = 0;
+            }
+        }
+    }
+
+    private void throwAndMove() {
         ui.displayMessage("It's this players turn to pick: "+currentPlayer.getName());
+    }
+
+    private void landAndAct() {
 
     }
 
