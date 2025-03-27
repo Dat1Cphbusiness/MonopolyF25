@@ -68,17 +68,17 @@ class Field{
  + Field(ID, label, cost, income)
  + String toString()
  + String onLand(Player p)
- + String processResponse(Player p)
- # String onAccept(Player p)
- # String onReject(Player p)
+ + String onAccept(Player p)
+ + String onReject(Player p)
 }
 class Board{
  - Field[] fields
- - CardDeck carddeck
- + Board(String [] fielddata, String [] carddata])
- - void createFields(String [] data)
+ + Board(String [] fielddata, String [] carddata] )
+'konstruktoren skal initialisere CardDeck med carddata som argument
+ - void createFields(String [] data, CardDeck cardDeck)
+ 'cardDeck skal senere sendes med som argument til statisk setCardDeck metode i Chance klassen
  + Field getField(int id)
- + CardDeck getCardDexk()
+
 }
 
 class CardDeck {
@@ -119,7 +119,7 @@ class TextUI {
 class FileIO{
 + void saveData(ArrayList<String> data, String path, String header)
 + ArrayList<String> readData(String path)
-}
++ String[] readData(String path, int length)
 }
 
 Game *-- TextUI

@@ -34,6 +34,7 @@ public class Game {
             registerPlayers();
         }
         displayPlayers();
+
     }
 
 
