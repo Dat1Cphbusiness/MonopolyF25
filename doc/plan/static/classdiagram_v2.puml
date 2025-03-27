@@ -57,15 +57,13 @@ class Account{
 + int getBalance()
 }
 
-
-
 class Field{
 - String label
  - int ID
  - int cost
  - int income
  - String option
- + Field(ID, label, cost, income)
+ + Field(int ID, String label, int cost, int income)
  + String toString()
  + String onLand(Player p)
  + String onAccept(Player p)
@@ -73,16 +71,26 @@ class Field{
 }
 class Board{
  - Field[] fields
- + Board(String [] fielddata, String [] carddata] )
-'konstruktoren skal initialisere CardDeck med carddata som argument
- - void createFields(String [] data, CardDeck cardDeck)
- 'cardDeck skal senere sendes med som argument til statisk setCardDeck metode i Chance klassen
+ + Board(String [] fielddata, String [] carddata)
+'konstruktoren instansierer CardDeck med carddata som argument og tildeler til Chance.cardDeck
+ - void createFields(String [] data)
  + Field getField(int id)
 
 }
+class Property extends Field{
+ - Player owner
+ - int seriesID
+ - boolean isMonopolized
+ + Property(int ID, String label, int cost, int income, int seriesID)
+}
 
+class Chance extends Field{
+ - {static} CardDeck cardDeck
+ + Chance(int ID, String label)
+}
 class CardDeck {
 - Card[] cards
+- int counter
 + CardDeck(String[] carddata)
 + Card getNext()
 + void createCards(String[] data)
