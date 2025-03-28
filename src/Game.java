@@ -9,6 +9,8 @@ public class Game {
     private int maxPlayers ;
     private ArrayList<Player> players;
     private Player currentPlayer;
+    private String cardDataPath = "data/carddata.csv";
+    private String fieldDataPath = "data/fielddata.csv";
 
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -37,6 +39,9 @@ public class Game {
 
 
         //BUILD THE BOARD
+        String[] cardData = io.readData(cardDataPath,10);
+        String[] fieldData = io.readData(fieldDataPath,10);
+        System.out.println("Tester med fielddata: " + fieldData[9]);
     }
 
 
