@@ -34,6 +34,6 @@ public class Board {
 
 
 
-        return fields[i];
+        return fields[i + 1];
     }
 }
