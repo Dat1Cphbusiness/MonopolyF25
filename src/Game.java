@@ -36,15 +36,20 @@ public class Game {
             registerPlayers();
         }
         displayPlayers();
-
-
         //BUILD THE BOARD
-        String[] cardData = io.readData(cardDataPath,10);
-        String[] fieldData = io.readData(fieldDataPath,10);
-        System.out.println("Tester med fielddata: " + fieldData[9]);
+        buildBoard();
     }
 
-
+    public void buildBoard(){
+        //
+        currentPlayer = players.get(0);
+        String[] fielddata = io.readData("data/fielddata.csv",40);
+        String[] carddata = io.readData("data/carddata.csv",44);
+        Board board = new Board(fielddata,carddata);
+        Field f = board.getField(11);
+        System.out.println(f.onLand(currentPlayer));
+        System.out.println(Chance.cardDeck.getNext().getMessage());
+    }
     public void registerPlayers(){
 
         int totalPlayers = 0;
