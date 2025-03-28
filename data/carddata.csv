@@ -3,7 +3,7 @@ Betal deres forsikring-1000 kr.; 0; 1000; payment
 Ryk tre felter tilbage.; 0; 0; moveSteps
 De har lagt penge ud til et sammenskudsgille. Mærkværdigvis betaler alle straks. Modtag fra hver medspiller kr. 500.; 500; 0; recieveFromPlayers
 Tag ind på Rådhuspladsen.; 0; 0; moveToField
-De har vundet i klasselotteriet.; Modtag 500 kr.; 500; 0; Reward
+De har vundet i klasselotteriet. Modtag 500 kr.; 500; 0; Reward
 Det er deres fødselsdag. Modtag af hver medspillet kr. 200.; 200; 0; recieveFromPlayers
 Tag med Mols-linien. Flyt brikken frem og hvis de passerer "START" indkasser da kr. 4000.; 0; 0; takeFerry
 Gå i fængsel. Ryk direkte til fængslet. Selv om De passere "START" indkassere de ikke kr. 4000.; 0; 0; moveToField
