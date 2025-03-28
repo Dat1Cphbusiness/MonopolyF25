@@ -22,7 +22,7 @@ public class CardDeck {
 
     public void createCards(String[] data) {
         for (int i = 0; i < data.length; i++) {
-            String[] values = data[i].split(",");
+            String[] values = data[i].split(":");
             String message = values[0];
             int income = Integer.parseInt(values[1]);
             int cost = Integer.parseInt(values[2]);
