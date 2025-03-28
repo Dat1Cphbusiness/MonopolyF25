@@ -9,6 +9,8 @@ public class Game {
     private int maxPlayers ;
     private ArrayList<Player> players;
     private Player currentPlayer;
+    private String cardDataPath = "data/carddata.csv";
+    private String fieldDataPath = "data/fielddata.csv";
 
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -34,12 +36,20 @@ public class Game {
             registerPlayers();
         }
         displayPlayers();
-
-
         //BUILD THE BOARD
+        buildBoard();
     }
 
-
+    public void buildBoard(){
+        //
+        currentPlayer = players.get(0);
+        String[] fielddata = io.readData("data/fielddata.csv",40);
+        String[] carddata = io.readData("data/carddata.csv",44);
+        Board board = new Board(fielddata,carddata);
+        Field f = board.getField(11);
+        System.out.println(f.onLand(currentPlayer));
+        System.out.println(Chance.cardDeck.getNext().getMessage());
+    }
     public void registerPlayers(){
 
         int totalPlayers = 0;
