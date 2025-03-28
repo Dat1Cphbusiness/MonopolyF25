@@ -37,6 +37,9 @@ public class Game {
 
 
         //BUILD THE BOARD
+        String[] carddata = io.readData("data/carddata.csv", 10);
+        String[] fielddata = io.readData("data/fielddata.csv", 40);
+
     }
 
 

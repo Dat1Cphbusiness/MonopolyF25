@@ -34,4 +34,23 @@ public class FileIO {
         }
         return data;
     }
+
+    public String[] readData(String path, int length){
+        String[] data = new String[length];
+        File file = new File(path);
+        int counter = 0;
+        try{
+          Scanner scan = new Scanner(file);
+          scan.nextLine();
+          while(scan.hasNextLine()){
+              String line = scan.nextLine();
+              data[counter] = line;
+              counter++;
+          }
+        } catch(FileNotFoundException e){
+            System.out.println("Filen blev ikke fundet " + e.getMessage());
+
+        }
+        return data;
+    }
 }
