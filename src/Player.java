@@ -1,14 +1,25 @@
 public class Player {
     private String name;
     private int score;
+    private Account playerAccount;
+    private boolean hasPassedStart;
     
     public Player(String name, int score){
         this.name = name;
         this.score = score;
+        this.playerAccount = new Account();
     }
-    public String getName(){
-        return name;
+    int updatePostion(int value){
+        if(hasPassedStart){
+            receive(4000);
+            hasPassedStart = false;
+        }
+
+        int position = value;
+        return position;
+
     }
+
 
     @Override
     public String toString(){
@@ -19,5 +30,7 @@ public class Player {
         return name;
     }
 
-
+    void receive (int amount){
+        playerAccount.deposit(amount);
+    }
 }
