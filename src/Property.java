@@ -10,11 +10,10 @@ public class Property extends Field {
     }
 
     public String toString() {
-        return this.Id + ", " + this.label;
+        return super.toString() + " | " + seriesId;
 
     }
     public String onLand(Player p) {
-        System.out.println("du landede på bla bla ");
 
         return p.getName() + "landede på grund " + toString();
     }
