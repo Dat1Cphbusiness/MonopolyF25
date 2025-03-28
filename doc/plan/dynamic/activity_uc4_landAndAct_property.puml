@@ -1,5 +1,5 @@
 @startuml
-
+!pragma layout smetana
 (*)  --> "Land on Property"
 
  If "Someone owns the property?" then
