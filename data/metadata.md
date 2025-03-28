@@ -65,12 +65,12 @@ Modtag legat for værdig trængende, 1000, 0, receive, 0
 
 
 ### Noter vedrørende felt data
-fielddata.csv er sepereret med ","
-Breweries skal kigges på da de har en variabel income 
-Det ene Tax felt skal kigges på da den også har en variabel cost
+- fielddata.csv er sepereret med ","
+- Breweries skal kigges på da de har en variabel income 
+- Det ene Tax felt skal kigges på da den også har en variabel cost
 
 
 ### Noter vedrørende chancekort data
-cardata.csv er sepereret med ";" !
-Linje 16 har en variabel udgift der skal kigges på
-Linje 18 har en variabel indtægt der skal kigges på
+- cardata.csv er sepereret med ";" !
+- Linje 16 har en variabel udgift der skal kigges på
+- Linje 18 har en variabel indtægt der skal kigges på
