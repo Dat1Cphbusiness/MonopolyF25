@@ -9,7 +9,7 @@ ID, FieldType,  Label,  Cost,   Income,     SeriesID
 8, Chance, Prøv lykken, 0, 0, 0
 9, Plot, Valby Langgade, 2000, 100, 4
 10, Plot, Allégade, 2400, 100, 4
-11, Visit, Visit, 0, 0, 0
+11, Visit, På besøg, 0, 0, 0
 12, Plot, Frederiksberg Allé, 2800, 200, 5
 13, Brewery, Tuborg Squash, 3000, 600, 2
 14, Plot, Bülowsvej, 2800, 200, 5
