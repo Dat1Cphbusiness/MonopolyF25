@@ -1,4 +1,5 @@
 public class Field {
+
     private String label;
     private int ID;
     private int cost;
@@ -13,15 +14,20 @@ public class Field {
     }
 
     @Override
-    public String toString(){
-        return this.ID + ", " + this.label;
+    public String toString() {
+        return this.ID + ", "  + this.label;
     }
 
     public String onLand(Player p){
-        return p.getName() + " er landet på " + toString();
+       return p + " er landet på felt " + this.toString();
     }
 
+    public String onAccept(Player p){
+        return null;
+    }
 
-
+    public String onReject(Player p){
+        return null;
+    }
 
 }
