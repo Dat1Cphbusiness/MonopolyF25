@@ -8,8 +8,8 @@ public class Board {
         for (int i = 0; i < data.length; i++) {
             String[] values = data[i].split(",");
             int id = Integer.parseInt(values[0].trim());
-            String FieldType = values[1].trim();
-            String label = values[2].trim();
+            String FieldType = values[1];
+            String label = values[2];
             int cost = Integer.parseInt(values[3].trim());
             int income = Integer.parseInt(values[4].trim());
             //int seriesId = Integer.parseInt(values[5].trim());
