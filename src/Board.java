@@ -13,12 +13,12 @@ public class Board {
             int cost = Integer.parseInt(values[4].trim());
             int income = Integer.parseInt(values[5].trim());
             int seriesId = Integer.parseInt(values[6].trim());
-
-
+            fields[i] = new Field(id,label, cost, income);
 
         }
     }
     public Field getField(int id) {
+
         return null;
     }
     public Board (String[] fielddata, String[] carddata) {
