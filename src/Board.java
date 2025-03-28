@@ -19,7 +19,7 @@ public class Board {
     }
     public Field getField(int id) {
 
-        return null;
+        return fields[i];
     }
     public Board (String[] fielddata, String[] carddata) {
         Fields = new Field[fielddata.length];
