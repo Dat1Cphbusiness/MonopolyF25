@@ -64,10 +64,15 @@ public class TextUI {
 
     public boolean promptBinary(String msg) {
         String choice = this.promptText(msg);
+
         if(choice.equalsIgnoreCase("Y")){
             return true;
-        } else if (choice.equals("N")) {
+        } else if (choice.equalsIgnoreCase("N")) {
             return false;
+
+        }else{
+            promptBinary(msg);
+
         }
         return false;
     }

@@ -56,11 +56,10 @@ public class Game {
 
         totalPlayers = ui.promptNumeric("Tast antal spillere:");       //Konvertere svaret til et tal
 
-
-
     if(totalPlayers > this.maxPlayers || totalPlayers < 2){ // vi kan evt. udvide promptNumeric med parametre til og min og max værdier (eller bruge overloading)
         ui.displayMessage("Antal spillere skal være mindst 2 og højest "+ this.maxPlayers);
         registerPlayers();
+        return;
     }
 
      while(this.players.size() < totalPlayers) {
