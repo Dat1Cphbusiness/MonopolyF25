@@ -18,14 +18,14 @@ public class Board {
 
             String[] values = data[i].split(",");
 
-            int id = Integer.parseInt(values[i].trim());
-            String  fieldtype = (values[i].trim());
-            String label = (values[i].trim());
-            int cost = Integer.parseInt(values[i].trim());
-            int income = Integer.parseInt(values[i].trim());
-            int seriesID = Integer.parseInt(values[i].trim());
+            int id = Integer.parseInt(values[0].trim());
+            String  fieldtype = (values[1].trim());
+            String label = (values[2].trim());
+            int cost = Integer.parseInt(values[3].trim());
+            int income = Integer.parseInt(values[4].trim());
+            int seriesID = Integer.parseInt(values[5].trim());
 
-            Field field = new Field(int ID, String label,  int cost, int income);
+            Field field = new Field(id, label,  cost, income);
         }
 
     }
