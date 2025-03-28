@@ -21,7 +21,7 @@ public class Player {
 
     public int updatePosition(int position){
         this.position += position;
-        if (this.position => 40) {
+        if (this.position >= 40) {
             receive(3000);
             this.position -= 40;
         }

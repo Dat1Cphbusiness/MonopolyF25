@@ -9,7 +9,7 @@ public class Account {
         this.balance += amount;
     }
     public boolean withdraw(int amount) {
-        if (this.balance => amount) {
+        if (this.balance >= amount) {
             this.balance -= amount;
             return true;
         } else {
