@@ -5,12 +5,15 @@ import java.util.Collections;
 public class Game {
     static TextUI ui = new TextUI();
     static FileIO io = new FileIO();
+
+    Dice dice = new Dice();
     private String name;
     private int maxPlayers ;
     private ArrayList<Player> players;
     private Player currentPlayer;
     private String cardDataPath = "data/carddata.csv";
     private String fieldDataPath = "data/fielddata.csv";
+    private Board board;
 
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -45,7 +48,7 @@ public class Game {
         currentPlayer = players.get(0);
         String[] fielddata = io.readData("data/fielddata.csv",40);
         String[] carddata = io.readData("data/carddata.csv",44);
-        Board board = new Board(fielddata,carddata);
+        board = new Board(fielddata,carddata);
         Field f = board.getField(11);
         System.out.println(f.onLand(currentPlayer));
         System.out.println(Chance.cardDeck.getNext().getMessage());
@@ -115,6 +118,13 @@ public class Game {
 
     private void throwAndMove() {
         ui.displayMessage("Det er: " + currentPlayer.getName() + "s tur");
+        int result = dice.rollDiceSum();
+        ui.displayMessage(currentPlayer.getName()+" slog "+result );
+        int newPosition = currentPlayer.updatePostion(result);
+         Field f = board.getField(newPosition);
+        System.out.println(f.onLand(currentPlayer));
+
+
     }
 
     private void landAndAct() {

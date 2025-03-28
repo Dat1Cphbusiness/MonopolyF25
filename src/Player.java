@@ -3,6 +3,7 @@ public class Player {
     private int score;
     private Account playerAccount;
     private boolean hasPassedStart;
+    private int position = 0;
     
     public Player(String name, int score){
         this.name = name;
@@ -10,13 +11,18 @@ public class Player {
         this.playerAccount = new Account();
     }
     int updatePostion(int value){
-        if(hasPassedStart){
-            receive(4000);
-            hasPassedStart = false;
-        }
+       /* if(hasPassedStart){
 
-        int position = value;
-        return position;
+            hasPassedStart = false;
+        }*/
+
+
+        this.position += value;
+        if(this.position > 40){
+            this.position -= 40;
+            receive(4000);
+        }
+        return this.position;
 
     }
 
