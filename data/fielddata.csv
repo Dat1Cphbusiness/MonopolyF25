@@ -1,0 +1,11 @@
+ID, FieldType,label,Cost,Income,SeriesID.
+ 1, Start, 0, start, 200, 0
+ 2, plot,rødovrevej,60,2,1
+ 3,chance,prøv lykken,0,0,0
+ 4,plot,Hvidovre,60, 2, 1
+ 5,tax,betal indkomstskat,200, 0,0
+ 6,shippingline,Øresund,100,25, 2
+ 7, plot, Roskildevej, 100,6,3
+ 8,chance,prøv lykken,0,0,0
+ 9, plot, Valby langgade,100,6,3
+ 10, plot, Allégade, 120,7,3
