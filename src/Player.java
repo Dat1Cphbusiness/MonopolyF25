@@ -6,6 +6,12 @@ public class Player {
         this.name = name;
         this.score = score;
     }
+    int updatePostion(int value){
+        int position = value;
+        return position;
+
+    }
+
 
     @Override
     public String toString(){
