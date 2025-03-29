@@ -1,10 +1,12 @@
 public class Player {
     private String name;
     private int score;
+    private Account playerAccount;
     
     public Player(String name, int score){
         this.name = name;
         this.score = score;
+        this.playerAccount = new Account();
     }
     int updatePostion(int value){
         int position = value;
@@ -22,5 +24,7 @@ public class Player {
         return name;
     }
 
-
+    void receive (int amount){
+        playerAccount.deposit(amount);
+    }
 }
