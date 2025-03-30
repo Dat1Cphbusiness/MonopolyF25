@@ -6,6 +6,8 @@ public class Field {
     private int income;
     private String option;
 
+
+
     public Field(int ID, String label, int cost, int income){
         this.ID = ID;
         this.label = label;
@@ -29,5 +31,7 @@ public class Field {
     public String onReject(Player p){
         return null;
     }
-
+    public String getOption() {
+        return option;
+    }
 }

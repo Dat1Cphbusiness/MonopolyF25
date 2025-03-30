@@ -33,7 +33,12 @@ class Game{
  - void endGame()
 
 }
-
+class Visit extends Field{
+}
+class Parking extends Field{
+}
+class Start extends Field{
+}
 class Player{
 - String name
 - Account account
@@ -42,12 +47,15 @@ class Player{
 - boolean hasWildCard
 + Player(String name, int startAmount)
 + int updatePosition(int value)
-- boolean startPassed()
 + boolean buyProperty(Field f)
 + boolean pay(int amount)
 + boolean pay(int amount, Player recipient)
 + void collect(int amount)
-+ void recieve(int amount)
++ void receive(int amount)
++ void moveToPosition(int value)
++ void setWildCard(boolean value)
++ void getWildCard()
++ void getInPrison()
 + String toString()
 + String getName()
 + int getBalance()
@@ -69,6 +77,9 @@ class Field{
  + Field(int ID, String label, int cost, int income)
  + String toString()
  + String onLand(Player p)
+}
+
+interface IOption{
  + String onAccept(Player p)
  + String onReject(Player p)
 }
@@ -80,7 +91,7 @@ class Board{
  + Field getField(int id)
 
 }
-class Property extends Field{
+class Property extends Field implements IOption{
  - Player owner
  - int seriesID
  - boolean isMonopolized
@@ -93,6 +104,14 @@ class Plot extends Property{
 }
 
 class Brewery extends Property{
+ # String onLand()
+}
+
+class Prison extends Field implements IOption{
+ # String onLand()
+}
+
+class Tax extends Field implements IOption{
  # String onLand()
 }
 

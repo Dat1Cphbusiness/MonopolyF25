@@ -13,7 +13,7 @@ public class Game {
     private Player currentPlayer;
     private String cardDataPath = "data/carddata.csv";
     private String fieldDataPath = "data/fielddata.csv";
-    private Board board;
+    public Board board;
 
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -73,18 +73,6 @@ public class Game {
      Collections.shuffle(this.players);
     }
 
-
-    private void createPlayer(String name, int score){
-        Player p = new Player(name, score);
-        players.add(p);
-    }
-
-    public void displayPlayers(){
-        for(Player p:players){
-            System.out.println(p);
-        }
-    }
-
     public void runGameLoop() {
         int count = 0;
         boolean continueGame = true;
@@ -99,6 +87,18 @@ public class Game {
             continueGame = ui.promptBinary("Fortsæt? (Y/N): ");
         }
     }
+
+    private void createPlayer(String name, int score){
+        Player p = new Player(name, score);
+        players.add(p);
+    }
+
+    public void displayPlayers(){
+        for(Player p:players){
+            System.out.println(p);
+        }
+    }
+
 
     public void endSession() {
         ArrayList<String> playerData = new ArrayList<>();
@@ -124,6 +124,7 @@ public class Game {
          Field f = board.getField(newPosition);
         System.out.println(f.onLand(currentPlayer));
 
+        //after land and act, check if dice was double, call recursively
 
     }
 
