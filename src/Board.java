@@ -21,8 +21,7 @@ public class Board {
             int seriesID = Integer.parseInt(values[5].trim());
             Field f =null;
               switch (fieldType) {
-                  case "Visit": f new Visit(fieldId, fieldLabel);
-                  break;
+
 
                   case "Chance": f new Chance (fieldId, fieldLabel);
                   break;
