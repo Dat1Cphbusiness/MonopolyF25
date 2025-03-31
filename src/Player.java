@@ -39,4 +39,8 @@ public class Player {
     void receive (int amount){
         playerAccount.deposit(amount);
     }
+
+    public boolean pay(int amount) {
+        return playerAccount.withdraw(amount);
+    }
 }
