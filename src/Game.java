@@ -1,3 +1,5 @@
+import util.FileIO;
+import util.TextUI;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -45,7 +47,7 @@ public class Game {
 
     public void buildBoard(){
         //
-        currentPlayer = players.get(0);
+
         String[] fielddata = io.readData("data/fielddata.csv",40);
         String[] carddata = io.readData("data/carddata.csv",44);
         board = new Board(fielddata,carddata);
@@ -121,15 +123,16 @@ public class Game {
         int result = dice.rollDiceSum();
         ui.displayMessage(currentPlayer.getName()+" slog "+result );
         int newPosition = currentPlayer.updatePostion(result);
-         Field f = board.getField(newPosition);
-        System.out.println(f.onLand(currentPlayer));
+        Field f = board.getField(newPosition);
+        landAndAct(f);
 
         //after land and act, check if dice was double, call recursively
 
     }
 
-    private void landAndAct() {
-
+    private void landAndAct(Field f) {
+        String msg = f.onLand(currentPlayer);
+        ui.displayMessage(msg);
     }
 
 }

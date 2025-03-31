@@ -18,10 +18,7 @@ public class Player {
 
 
         this.position += value;
-        if(this.position > 40){
-            this.position -= 40;
-            receive(4000);
-        }
+
         return this.position;
 
     }
@@ -37,6 +34,7 @@ public class Player {
     }
 
     void receive (int amount){
+
         playerAccount.deposit(amount);
     }
 }

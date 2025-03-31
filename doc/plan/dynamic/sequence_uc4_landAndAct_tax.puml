@@ -1,8 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-
-participant Game as game
 participant TextUI as ui
+participant Game as game
+
 participant Tax as subfield
 participant Field  as field
 
@@ -11,7 +11,8 @@ game -> game : landAndAct(f)
 game -> subfield : msg = onLand(player)
 subfield -> field : msg = super.onLand(player);
 field --> subfield : "Du er landet på skat."
-subfield --> game:   "Du er landet på skat. Vil du betale fast beløb på "+this.cost+"kr? (Tast Y). Ellers trækker vi et beløb der svarer til 10 % af dine aktiver (Tast N)"
+subfield -> subfield : msg+="Du skal betale et beløb der svarer til 10 % af dine aktiver.\nVil du hellere betale et fast beløb på 4000kr?(Y/N)"
+subfield --> game:   "Du er landet på skat. Du skal betale et beløb der svarer til 10 % af dine aktiver.\n Vil du hellere betale et fast beløb på 4000kr?(Y/N)"
 
 game -> ui : response = promptBinary( msg )
 
@@ -19,11 +20,11 @@ ui --> game : true
 'game -> field : msg = processResponse(player, response)
 
 alt response == true
-     field -> subfield: onAccept()
-     subField --> game: "Egon har betalt 10% i skat"
+     game -> subfield: onAccept()
+     subfield --> game: "Egon har betalt 10% i skat"
    else
-     field -> subfield: onReject()
-     subField --> game: "Egon har betalt 4000kr i skat"
+     game -> subfield: onReject()
+     subfield --> game: "Egon har betalt 4000kr i skat"
 end
 
 
