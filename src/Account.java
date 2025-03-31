@@ -4,13 +4,17 @@ public class Account {
     private int balance;
     TextUI ui = new TextUI();
 
-    public void deposit(int ammount){
-
+    public Account(int balance){
+        this.balance = balance;
     }
 
-    public boolean withdraw(int ammount) {
-        if(balance >= ammount) {
-            balance -= ammount;
+    public void deposit(int amount){
+        this.balance += amount;
+    }
+
+    public boolean withdraw(int amount) {
+        if(balance >= amount) {
+            balance -= amount;
             return true;
         } else {
             ui.displayMessage("Du har ikke penge nok til at betale...");

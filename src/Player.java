@@ -1,16 +1,19 @@
+import java.util.ArrayList;
+
 public class Player {
     private String name;
-    private int score;
     private Account playerAccount;
     private boolean hasPassedStart;
     private int position = 0;
+    private ArrayList<Field> deeds = new ArrayList<>();
     
-    public Player(String name, int score){
+    public Player(String name, int balance){
         this.name = name;
-        this.score = score;
-        this.playerAccount = new Account();
+        this.playerAccount = new Account(balance);
+
+
     }
-    int updatePostion(int value){
+    public int updatePostion(int value){
         if (position+value > 40){
             receive(4000);
             position = (position + value) - 40;
@@ -22,18 +25,44 @@ public class Player {
 
     }
 
+    public void receive (int amount){
+        playerAccount.deposit(amount);
+    }
+
+    public void pay(int amount){
+        playerAccount.withdraw(amount);
+    }
+
+    public void pay(int amount, Player recipient){
+        this.pay(amount);
+        recipient.receive(amount);
+    }
+
+    public void buyProperty(Field f){
+        this.pay(f.getCost());
+        deeds.add(f);
+    }
+
+    public int getTotalWorth(){
+        int totalDeedWorth = 0;
+
+        for(Field d: deeds){
+            totalDeedWorth += d.getCost();
+        }
+        int total = totalDeedWorth + playerAccount.getBalance();
+
+        return total;
+    }
+
 
     @Override
     public String toString(){
-        return name + ", "+ score;
+        return name + ", "+ playerAccount.getBalance();
     }
 
     public String getName(){
         return name;
     }
 
-    void receive (int amount){
 
-        playerAccount.deposit(amount);
-    }
 }
