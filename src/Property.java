@@ -31,9 +31,7 @@ public class Property extends Field{
         if(owner == null){
             setOption("Buy");
             msg += "Vil du købe (Y/N):";
-        } else if (p == owner) {
-
-        } else {
+        } else if (p != owner) {
             msg += "Du skal betale" + getIncome();
             // p.pay(this);
         }
