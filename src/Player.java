@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 public class Player {
     private String name;
     private int score;
     private Account playerAccount;
+    private ArrayList<Field> deeds;
     private boolean hasPassedStart;
     private int position = 0;
     
@@ -9,6 +12,7 @@ public class Player {
         this.name = name;
         this.score = score;
         this.playerAccount = new Account();
+        this.deeds = new ArrayList<Field>();
     }
     int updatePostion(int value){
        /* if(hasPassedStart){
@@ -46,5 +50,12 @@ public class Player {
     public boolean pay(int amount, Player recipient){
         recipient.receive(amount);
         return pay(amount);
+    }
+
+    public boolean buyProperty(Field f) {
+        if (pay(f.getCost()) == false)
+            return false;
+        deeds.add(f);
+        return true;
     }
 }
