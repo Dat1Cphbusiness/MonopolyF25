@@ -25,7 +25,19 @@ public class Property extends Field implements IOption{
                 --if yes, check for player complete series and set monopolized = true
          */
 
-        return super.onLand(p);
+        // return super.onLand(p);
+
+        String msg = super.onLand(p);
+        if (owner == null){
+            msg += "Vil du købe? (Y/N):";
+            setOption ("buy");
+
+        } else if (owner != null && !p.equals(owner)) {
+            msg += "du skal betale " + getIncome();
+            //p.pay(getIncome());
+
+        }
+        return msg;
     }
 
     @Override
@@ -36,5 +48,9 @@ public class Property extends Field implements IOption{
     @Override
     public String onReject(Player p) {
         return super.onReject(p);
+    }
+
+    public Player getOwner(){
+        return this.owner;
     }
 }

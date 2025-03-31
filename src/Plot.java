@@ -14,15 +14,23 @@ public class Plot extends Property{
       /*
 
             p lands on plot
-                if p is owner
-                    check if monopolized
-                        give option to build
-                            if accepted = build;
+            if p is owner
+            check if monopolized
+            give option to build
+            if accepted = build;
 
        */
 
+        //return super.onLand(p);
 
-        return super.onLand(p);
+        String msg = super.onLand(p);
+
+        if(getOwner().equals(p) && checkForMonopoly()){
+            setOption("build");
+            msg += "Vil du bygge? (Y/N):";
+        }
+
+        return msg;
     }
 
     @Override
