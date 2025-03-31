@@ -20,8 +20,8 @@ public class Board {
             int income = Integer.parseInt(values[4].trim());
             int seriesID = Integer.parseInt(values[5].trim());
             Field f =null;
-              switch (fieldtype) {
-                  case "Chance" : f = new Chane(ID, label, income, cost);
+              switch (fieldType) {
+                  case "Chance" : f = new Chance(ID, label, income, cost);
                       break;
                   case "Start" : f = new Start(ID, label, income, cost);
                       break;
