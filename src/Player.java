@@ -43,4 +43,8 @@ public class Player {
     public boolean pay(int amount) {
         return playerAccount.withdraw(amount);
     }
+    public boolean pay(int amount, Player recipient){
+        recipient.receive(amount);
+        return pay(amount);
+    }
 }
