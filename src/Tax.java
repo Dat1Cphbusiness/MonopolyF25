@@ -9,8 +9,8 @@ public class Tax extends Field implements IOption{
     public String onLand(Player p) {
         this.setOption("Fixed");
         String s = super.onLand(p);
-        s += "\n Du skal nu betale et beløb der svarer til 10% af dine aktiver. " +
-                "Vil du hellere betale et fast beløb på" + this.getCost() + "kr? Y/N \n";
+        s += "\nDu skal nu betale et beløb der svarer til 10% af dine aktiver. " +
+                "Vil du hellere betale et fast beløb på " + this.getCost() + "kr? Y/N \n";
 
         return s;
     }
@@ -20,18 +20,17 @@ public class Tax extends Field implements IOption{
 
         p.pay(this.getCost());
 
-        return "Du har betalt: " + this.getCost() + "kr";
+        return "Du har betalt " + this.getCost() + " kr. i skat. Din samlede værdi er nu " + p.getTotalWorth() + " kr.";
     }
 
     @Override
     public String onReject(Player p) {
 
-       // p.getTotalWorth() * 0.90;
-        double newTotalWorth = p.getTotalWorth() * 0.90;
         double tax = p.getTotalWorth() * 0.10;
+        int roundedTax = (int) Math.round(tax);
 
-        p.pay((int)tax);
+        p.pay(roundedTax);
 
-        return "Du har betalt: " + tax + "kr. og du har: " + newTotalWorth + " i værdi tilbage";
+        return "Du har betalt " + roundedTax + " kr. i skat. Din samlede værdi er nu " + p.getTotalWorth() + " kr.";
     }
 }

@@ -58,4 +58,6 @@ public class Property extends Field implements IOption{
     public Player getOwner(){
         return this.owner;
     }
+
+
 }

@@ -138,9 +138,11 @@ public class Game {
         }
 
        if(response){
-           f.onAccept(currentPlayer);
+           String accept = f.onAccept(currentPlayer);
+           ui.displayMessage(accept);
        }else {
-           f.onReject(currentPlayer);
+           String reject = f.onReject(currentPlayer);
+           ui.displayMessage(reject);
        }
     }
 
