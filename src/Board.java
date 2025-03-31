@@ -21,23 +21,23 @@ public class Board {
             int seriesID = Integer.parseInt(values[5].trim());
             Field f =null;
               switch (fieldType) {
-                  case "Chance" : f = new Chance(ID, label, income, cost);
+                  case "Chance" : f = new Chance(fieldId, fieldLabel, income, cost);
                       break;
-                  case "Start" : f = new Start(ID, label, income, cost);
+                  case "Start" : f = new Start(fieldId, fieldLabel, income, cost);
                       break;
-                  case : "Visit" : f = new Visit(ID, label, income, cost);
+                  case : "Visit" : f = new Visit(fieldId, fieldLabel, income, cost);
                       break;
-                  case "Parking" : f = new Parking(ID, label, income, cost);
+                  case "Parking" : f = new Parking(fieldId, fieldLabel, income, cost);
                           break;
-                  case "Prison" : f = new Prison(ID, label, income, cost);
+                  case "Prison" : f = new Prison(fieldId, fieldLabel, income, cost);
                       break;
-                  case "Tax" : f = new Tax(ID, label, income, cost);
+                  case "Tax" : f = new Tax(fieldId, fieldLabel, income, cost);
                       break;
-                  case "Plot" : f = new Plot(ID, label, income, cost, seriesID);
+                  case "Plot" : f = new Plot(fieldId, fieldLabel, income, cost, seriesID);
                       break;
-                  case "Brewery" : f = new Brewery(ID, label, income, cost, seriesID);
+                  case "Brewery" : f = new Brewery(fieldId, fieldLabel, income, cost, seriesID);
                       break;
-                  case "ShippingLine" : f = new ShippingLine(ID, label, income, cost, seriesID);
+                  case "ShippingLine" : f = new ShippingLine(fieldId, fieldLabel, income, cost, seriesID);
                       break;
 
 
