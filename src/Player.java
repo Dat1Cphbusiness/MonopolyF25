@@ -11,13 +11,12 @@ public class Player {
         this.playerAccount = new Account();
     }
     int updatePostion(int value){
-       /* if(hasPassedStart){
-
-            hasPassedStart = false;
-        }*/
-
-
-        this.position += value;
+        if (position+value > 40){
+            receive(4000);
+            position = (position + value) - 40;
+        }else{
+            position += value;
+        }
 
         return this.position;
 
