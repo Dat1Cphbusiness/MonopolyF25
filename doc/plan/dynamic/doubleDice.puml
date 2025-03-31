@@ -1,0 +1,21 @@
+@startuml
+!pragma layout smetana
+(*)  --> "slå med terning"
+     --> felt fundet og \nposition opdateret
+ If "Der blev slået to ens" then
+
+  --> [Yes] If "Er det 3 gang?" then
+
+     --> [No] "Fængsels-felt fundet"
+     --> "LandAndAct"
+     else
+      --> [Yes] "Du får en tur mere"
+      --> [Yes] "LandAndAct"
+      Endif
+  else
+   --> [No]  "LandAndAct"
+
+
+  Endif
+
+@enduml
