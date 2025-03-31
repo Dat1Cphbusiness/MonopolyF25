@@ -34,4 +34,8 @@ public class Field {
     public String getOption() {
         return option;
     }
+
+    public int getCost(){
+        return this.cost;
+    }
 }
