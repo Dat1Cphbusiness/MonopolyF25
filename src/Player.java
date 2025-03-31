@@ -4,7 +4,7 @@ public class Player {
     private String name;
     private Account playerAccount;
     private boolean hasPassedStart;
-    private int position = 0;
+    private int position = 1;
     private ArrayList<Property> deeds = new ArrayList<>();
     
     public Player(String name, int balance){

@@ -7,10 +7,10 @@ public class Tax extends Field implements IOption{
 
     @Override
     public String onLand(Player p) {
-
+        this.setOption("Fixed");
         String s = super.onLand(p);
         s += "\n Du skal nu betale et beløb der svarer til 10% af dine aktiver. " +
-                "Vil du hellere betale et fast beløb på" + this.cost + "kr? Y/N \n";
+                "Vil du hellere betale et fast beløb på" + this.getCost() + "kr? Y/N \n";
 
         return s;
     }
@@ -18,9 +18,9 @@ public class Tax extends Field implements IOption{
     @Override
     public String onAccept(Player p) {
 
-        p.pay(cost);
+        p.pay(this.getCost());
 
-        return "Du har betalt: " + cost + "kr";
+        return "Du har betalt: " + this.getCost() + "kr";
     }
 
     @Override

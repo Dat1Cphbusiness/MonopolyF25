@@ -41,4 +41,8 @@ public class Field {
     public int getIncome() {
         return income;
     }
+
+    public int getCost() {
+        return cost;
+    }
 }

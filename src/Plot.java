@@ -25,9 +25,9 @@ public class Plot extends Property{
 
         String msg = super.onLand(p);
 
-        if(getOwner().equals(p) && isMonopolized){
+        if(getOwner()!=null && getOwner()==p && isMonopolized){
             setOption("build");
-            msg += "Vil du bygge? (Y/N):";
+            msg += "\n Vil du bygge? (Y/N):";
         }
 
         return msg;
