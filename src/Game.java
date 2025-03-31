@@ -1,3 +1,5 @@
+import util.FileIO;
+import util.TextUI;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -5,10 +7,15 @@ import java.util.Collections;
 public class Game {
     static TextUI ui = new TextUI();
     static FileIO io = new FileIO();
+
+    Dice dice = new Dice();
     private String name;
     private int maxPlayers ;
     private ArrayList<Player> players;
     private Player currentPlayer;
+    private String cardDataPath = "data/carddata.csv";
+    private String fieldDataPath = "data/fielddata.csv";
+    public Board board;
 
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -22,7 +29,7 @@ public class Game {
         ArrayList<String> data = io.readData("data/playerData.csv");
         ui.displayMessage("Velkommen til "+ this.name);
 
-        if(!data.isEmpty() && ui.promptBinary("would your like to continue previous game: Y/N")){
+        if (!data.isEmpty() && ui.promptBinary("Gammel data fundet, vil du fortsætte herfra?: Y/N")) {
             for(String s : data){
               String[] values =  s.split(",");//  "tess, 0"
                 int score = Integer.parseInt(values[1].trim());
@@ -34,24 +41,30 @@ public class Game {
             registerPlayers();
         }
         displayPlayers();
+        //BUILD THE BOARD
+        buildBoard();
     }
 
+    public void buildBoard(){
+        //
 
+        String[] fielddata = io.readData("data/fielddata.csv",40);
+        String[] carddata = io.readData("data/carddata.csv",44);
+        board = new Board(fielddata,carddata);
+        Field f = board.getField(11);
+        System.out.println(f.onLand(currentPlayer));
+        System.out.println(Chance.cardDeck.getNext().getMessage());
+    }
     public void registerPlayers(){
 
         int totalPlayers = 0;
 
-        try {
-            totalPlayers = ui.promptNumeric("Number of players:");       //Konvertere svaret til et tal
-        } catch (NumberFormatException e) {
-            ui.displayMessage("Wrong input.. Please try again.");
-            registerPlayers();
-        }
+        totalPlayers = ui.promptNumeric("Tast antal spillere:");       //Konvertere svaret til et tal
 
-
-    if(totalPlayers > this.maxPlayers || totalPlayers < 2){
-        System.out.println("Your input number was higher than the allowed " + this.maxPlayers + " players");
+    if(totalPlayers > this.maxPlayers || totalPlayers < 2){ // vi kan evt. udvide promptNumeric med parametre til og min og max værdier (eller bruge overloading)
+        ui.displayMessage("Antal spillere skal være mindst 2 og højest "+ this.maxPlayers);
         registerPlayers();
+        return;
     }
 
      while(this.players.size() < totalPlayers) {
@@ -62,17 +75,32 @@ public class Game {
      Collections.shuffle(this.players);
     }
 
+    public void runGameLoop() {
+        int count = 0;
+        boolean continueGame = true;
+
+        while (continueGame) {
+            if (count == players.size()) {
+                count=0;
+            }
+            currentPlayer = players.get(count);
+            this.throwAndMove();
+            count++;
+            continueGame = ui.promptBinary("Fortsæt? (Y/N): ");
+        }
+    }
 
     private void createPlayer(String name, int score){
         Player p = new Player(name, score);
         players.add(p);
     }
+
     public void displayPlayers(){
         for(Player p:players){
             System.out.println(p);
         }
-
     }
+
 
     public void endSession() {
         ArrayList<String> playerData = new ArrayList<>();
@@ -87,13 +115,24 @@ public class Game {
         //Test om promptChoice virker
         //ui.displayList(ui.promptChoice(playerData, 3, "vælg en spiller"), "Din spiller liste");
         io.saveData(playerData, "data/playerData.csv", "Name, Score");
+        ui.displayMessage("Spillet er gemt og afsluttet.");
     }
 
+    private void throwAndMove() {
+        ui.displayMessage("Det er: " + currentPlayer.getName() + "s tur");
+        int result = dice.rollDiceSum();
+        ui.displayMessage(currentPlayer.getName()+" slog "+result );
+        int newPosition = currentPlayer.updatePostion(result);
+        Field f = board.getField(newPosition);
+        landAndAct(f);
 
-    public void runGameLoop(){
-        currentPlayer=players.get(0);
-        ui.displayMessage("It's this players turn to pick: "+currentPlayer.getName());
+        //after land and act, check if dice was double, call recursively
 
+    }
+
+    private void landAndAct(Field f) {
+        String msg = f.onLand(currentPlayer);
+        ui.displayMessage(msg);
     }
 
 }

@@ -1,3 +1,5 @@
+import util.TextUI;
+
 public class Account {
     private int balance;
     TextUI ui = new TextUI();

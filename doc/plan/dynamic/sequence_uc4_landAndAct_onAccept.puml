@@ -11,7 +11,7 @@ ui --> game: true
 'game -> field : msg = processResponse(player, response )
 
 alt response true
-    field  -> subField : onAccept(player)
+    game  -> subField : onAccept(player)
 
     alt option == "buy"
         subField  -> Player: buyProperty(this)
@@ -21,13 +21,14 @@ alt response true
     else option == "build"
              subField -> Player: buildHouse()
              Player -> Account : withdraw(houseCost)
+              subField --> game : "Egon byggede på Valbylanggade"
 
     end
 
 else response false
-    field -> subField : onReject(player)
+    game -> subField : onReject(player)
         alt option == "buy"
-            subField --> game: "Egon afviste købstilbud. Auktion?"
+            subField --> game: "Egon afviste købstilbud."
 
         else option == "build"
               subField --> game: "Egon afviste at bygge"
