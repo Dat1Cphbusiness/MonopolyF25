@@ -30,7 +30,6 @@ public class TextUI {
         while (!valid) {
             displayMessage(msg);  // Ask the user a question
             String input = sc.nextLine();  // Get user input
-
             try {
                 numInput = Integer.parseInt(input);  // Try converting to number
                 valid = true;  // If successful, mark as valid
@@ -46,7 +45,6 @@ public class TextUI {
         int numInput=0;
         System.out.println(msg);                      //Stille brugeren et spørgsmål
         String input = sc.nextLine();                 //Give brugere et sted at placere sit svar og vente på svaret
-
         try {
              numInput = Integer.parseInt(input);       //Konvertere svaret til et tal
 
@@ -58,6 +56,7 @@ public class TextUI {
      */
 
     public String promptText(String msg){
+
         System.out.println(msg);                //Stille brugeren et spørgsmål
         String input = sc.nextLine();           //Give brugere et sted at placere sit svar og vente på svaret
 
@@ -66,7 +65,6 @@ public class TextUI {
 
     public boolean promptBinary(String msg) {
         String choice = this.promptText(msg);
-
         if(choice.equalsIgnoreCase("Y")){
             return true;
         } else if (choice.equalsIgnoreCase("N")) {
@@ -80,6 +78,6 @@ public class TextUI {
     }
 
     public void displayMessage(String msg) {
-        System.out.println(msg);
+        System.out.println("\n"+msg);
     }
 }
