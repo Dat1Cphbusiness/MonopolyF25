@@ -27,14 +27,14 @@ public class Property extends Field{
 
         // return super.onLand(p);
 
-        String msg = super.onLand();
+        String msg = super.onLand(p);
         if (owner == null){
             msg += "Vil du købe? (Y/N):";
             setOption ("buy");
 
         } else if (owner != null && !p.equals(owner)) {
             msg += "du skal betale " + getIncome();
-            p.pay(getIncome());
+            //p.pay(getIncome());
 
         }
         return msg;
