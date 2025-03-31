@@ -20,7 +20,30 @@ public class Board {
             int income = Integer.parseInt(values[4].trim());
             int seriesID = Integer.parseInt(values[5].trim());
 
-            fields[i] = new Field(fieldId,fieldLabel,cost,income);
+            Field f = null;//new Field(fieldId,fieldLabel,cost,income);
+            switch (fieldType){
+                case "Chance": f= new Chance(fieldId,fieldLabel);
+                break;
+                case "Tax": f = new Tax(fieldId,fieldLabel,cost);
+                break;
+                case "Plot": f = new Plot(fieldId,fieldLabel,cost,income,seriesID);
+                break;
+                case "ShippingLine":  f = new ShippingLine(fieldId,fieldLabel,cost,income,seriesID);
+                    break;
+                case "Brewery":  f = new Brewery(fieldId,fieldLabel,cost,income,seriesID);
+                    break;
+                case "Visit":  f = new Visit(fieldId,fieldLabel);
+                    break;
+                case "Parking":  f = new Parking(fieldId,fieldLabel);
+                    break;
+                case "Start":  f = new Start(fieldId,fieldLabel,income);
+                    break;
+                case "Prison":  f = new Prison(fieldId,fieldLabel,cost);
+                    break;
+            }
+
+
+            fields[i] = f;
 
         }
     }

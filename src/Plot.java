@@ -25,7 +25,7 @@ public class Plot extends Property{
 
         String msg = super.onLand(p);
 
-        if(getOwner().equals(p) && checkForMonopoly()){
+        if(getOwner().equals(p) && isMonopolized){
             setOption("build");
             msg += "Vil du bygge? (Y/N):";
         }
@@ -35,6 +35,9 @@ public class Plot extends Property{
 
     @Override
     public String onAccept(Player p) {
+
+
+        //checkForMonopoly();//tjekker om købet skabte et monopol og sætter isMonopolized til true
         return super.onAccept(p);
     }
 

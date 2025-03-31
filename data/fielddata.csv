@@ -29,7 +29,7 @@ ID, FieldType,  Label,  Cost,   Income,     SeriesID
 28, Plot, Kgs. Nytorv, 5200, 450, 8
 29, Brewery, Coca-Cola, 3000, 600, 2
 30, Plot, Østerbrogade, 5600, 500, 8
-31, Jail, Fængsel, 0, 0, 0
+31, Prison, Fængsel, 0, 0, 0
 32, Plot, Amagertorv, 6000, 550, 9
 33, Plot, Vimmelskaftet, 6000, 550, 9
 34, Chance, Prøv lykken, 0, 0, 0

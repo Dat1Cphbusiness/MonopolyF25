@@ -18,6 +18,7 @@ public class Account {
             return true;
         } else {
             ui.displayMessage("Du har ikke penge nok til at betale...");
+            //DU ER DØD
         }
         return false;
     }

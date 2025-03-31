@@ -1,7 +1,7 @@
 public class Property extends Field implements IOption{
     private Player owner;
     private int seriesID;
-    private boolean isMonopolized;
+    protected boolean isMonopolized = false;
 
     public Property(int ID, String label, int cost, int income, int seriesID){
         super(ID,label,cost,income);
@@ -39,7 +39,12 @@ public class Property extends Field implements IOption{
         }
         return msg;
     }
+    protected void checkForMonopoly(){
 
+        /*
+        * WRITE YOUR PSEUDOCODE HERE
+        * */
+    }
     @Override
     public String onAccept(Player p) {
         return super.onAccept(p);

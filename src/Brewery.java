@@ -9,11 +9,14 @@ public class Brewery extends Property{
     }
 
     @Override
-    public String onLand(Player p) {
-        /*
 
-        */
-        return super.onLand(p);
+
+        public String onLand(Player p) {
+        String msg = super.onLand(p);
+            /*
+                Modificerer cost ud fra terningkastet
+             */
+            return msg;
     }
 
     @Override

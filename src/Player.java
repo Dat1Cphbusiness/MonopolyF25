@@ -29,25 +29,30 @@ public class Player {
         playerAccount.deposit(amount);
     }
 
-    public void pay(int amount){
-        playerAccount.withdraw(amount);
+    public boolean pay(int amount){
+
+        return playerAccount.withdraw(amount);
+
     }
 
-    public void pay(int amount, Player recipient){
-        this.pay(amount);
+    public boolean pay(int amount, Player recipient){
         recipient.receive(amount);
+        return this.pay(amount);
     }
 
-    public void buyProperty(Property p){
-        this.pay(p.getCost());
-        deeds.add(p);
+    public boolean buyProperty(Property p){
+        if(this.pay(p.getCost())){
+            deeds.add(p);
+            return true;
+        }
+        return false;
     }
 
     public int getTotalWorth(){
         int totalDeedWorth = 0;
 
-        for(Field d: deeds){
-            totalDeedWorth += d.getCost();
+        for(Property p: deeds){
+            totalDeedWorth += p.getCost();
         }
         int total = totalDeedWorth + playerAccount.getBalance();
 
