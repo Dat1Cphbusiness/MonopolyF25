@@ -21,7 +21,6 @@ public class Game {
         this.name = name;
         this.maxPlayers = maxPlayers;
         players = new ArrayList<>();
-
     }
 
 
@@ -46,14 +45,12 @@ public class Game {
     }
 
     public void buildBoard(){
-        //
 
         String[] fielddata = io.readData("data/fielddata.csv",40);
         String[] carddata = io.readData("data/carddata.csv",44);
         board = new Board(fielddata,carddata);
         Field f = board.getField(11);
-        System.out.println(f.onLand(currentPlayer));
-        System.out.println(Chance.cardDeck.getNext().getMessage());
+
     }
     public void registerPlayers(){
 
