@@ -58,4 +58,13 @@ public class Player {
         deeds.add(f);
         return true;
     }
+    public int getTotalWorth(){
+        int result=0;
+        for(int i = 0; i < deeds.size(); i++){
+            result += deeds.get(i).getCost();
+        }
+        result += playerAccount.getBalance();
+        return result;
+
+    }
 }
