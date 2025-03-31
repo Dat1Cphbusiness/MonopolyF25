@@ -35,7 +35,7 @@ public class Property extends Field{
 
         } else {
             msg += "Du skal betale" + getIncome();
-            p.pay(this);
+            // p.pay(this);
         }
         return msg;
     }

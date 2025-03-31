@@ -24,7 +24,7 @@ public class Plot extends Property{
 
         String msg = super.onLand(p);
 
-        if (p == getOwner() && checkForMonopoly()){
+        if (p == getOwner() /*&& checkForMonopoly()*/){
             setOption("Build");
             msg += "Vil du bygge? (Y/N):";
         }
