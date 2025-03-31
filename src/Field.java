@@ -31,7 +31,14 @@ public class Field {
     public String onReject(Player p){
         return null;
     }
+
     public String getOption() {
         return option;
+    }
+
+    public void setOption(String option){ this.option = option; }
+
+    public int getIncome() {
+        return income;
     }
 }
