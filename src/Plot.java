@@ -22,7 +22,14 @@ public class Plot extends Property{
        */
 
 
-        return super.onLand(p);
+        String msg = super.onLand(p);
+
+        if (p == getOwner() && checkForMonopoly()){
+            setOption("Build");
+            msg += "Vil du bygge? (Y/N):";
+        }
+
+        return msg;
     }
 
     @Override

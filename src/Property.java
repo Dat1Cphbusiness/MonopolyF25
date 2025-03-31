@@ -25,7 +25,19 @@ public class Property extends Field{
                 --if yes, check for player complete series and set monopolized = true
          */
 
-        return super.onLand(p);
+        ;
+        String msg = super.onLand(p);
+
+        if(owner == null){
+            setOption("Buy");
+            msg += "Vil du købe (Y/N):";
+        } else if (p == owner) {
+
+        } else {
+            msg += "Du skal betale" + getIncome();
+            p.pay(this);
+        }
+        return msg;
     }
 
     @Override
@@ -36,5 +48,9 @@ public class Property extends Field{
     @Override
     public String onReject(Player p) {
         return super.onReject(p);
+    }
+
+    public Player getOwner(){
+        return owner;
     }
 }

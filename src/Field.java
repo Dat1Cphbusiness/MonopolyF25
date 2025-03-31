@@ -34,4 +34,14 @@ public class Field {
     public String getOption() {
         return option;
     }
+
+    public void setOption(String option){
+        this.option = option;
+    }
+
+    public int getIncome(){
+        return income;
+    }
+
+
 }
