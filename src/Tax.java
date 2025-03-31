@@ -27,7 +27,8 @@ public class Tax extends Field implements IOption{
 
         p.getTotalWorth() * 0.90;
         int i = p.getTotalWorth() * 0.90;
+        int k = p.getTotalWorth() * 0.10;
 
-        return "Du har betalt: " + cost + "kr. og du har: " + i + " mængde penge tilbage";
+        return "Du har betalt: " + k + "kr. og du har: " + i + " mængde penge tilbage";
     }
 }
