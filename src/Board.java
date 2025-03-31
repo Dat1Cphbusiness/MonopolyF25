@@ -21,6 +21,8 @@ public class Board {
             int seriesID = Integer.parseInt(values[5].trim());
             Field f =null;
               switch (fieldType) {
+                  case "Chance": f new Chance (fieldId, fieldLabel);
+                  break;
                   case "Plot" : f = new Plot(fieldId, fieldLabel, income, cost, seriesID);
                       break;
                   case "Brewery" : f = new Brewery(fieldId, fieldLabel, income, cost, seriesID);
