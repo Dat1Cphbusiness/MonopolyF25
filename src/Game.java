@@ -66,7 +66,7 @@ public class Game {
 
      while(this.players.size() < totalPlayers) {
         String playerName = ui.promptText("Tast spiller navn");
-        this.createPlayer(playerName, 0);
+        this.createPlayer(playerName, 30000);
      }
 
      Collections.shuffle(this.players);
@@ -116,7 +116,7 @@ public class Game {
     }
 
     private void throwAndMove() {
-        ui.displayMessage("Det er: " + currentPlayer.getName() + "s tur");
+        ui.displayMessage("Det er: " + currentPlayer.toString() + " tur");
         int result = dice.rollDiceSum();
         ui.displayMessage(currentPlayer.getName()+" slog "+result );
         int newPosition = currentPlayer.updatePostion(result);
