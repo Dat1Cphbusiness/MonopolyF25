@@ -26,8 +26,8 @@ public class Tax extends Field implements IOption{
     public String onReject(Player p) {
 
         p.getTotalWorth() * 0.90;
-        int i = p.getTotalWorth() * 0.90;
-        int k = p.getTotalWorth() * 0.10;
+        double j = p.getTotalWorth() * 0.90;
+        double k = p.getTotalWorth() * 0.10;
 
         return "Du har betalt: " + k + "kr. og du har: " + i + " mængde penge tilbage";
     }
