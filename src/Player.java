@@ -5,7 +5,7 @@ public class Player {
     private Account playerAccount;
     private boolean hasPassedStart;
     private int position = 0;
-    private ArrayList<Field> deeds = new ArrayList<>();
+    private ArrayList<Property> deeds = new ArrayList<>();
     
     public Player(String name, int balance){
         this.name = name;
@@ -38,9 +38,9 @@ public class Player {
         recipient.receive(amount);
     }
 
-    public void buyProperty(Field f){
-        this.pay(f.getCost());
-        deeds.add(f);
+    public void buyProperty(Property p){
+        this.pay(p.getCost());
+        deeds.add(p);
     }
 
     public int getTotalWorth(){
