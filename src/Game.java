@@ -16,6 +16,8 @@ public class Game {
     private String cardDataPath = "data/carddata.csv";
     private String fieldDataPath = "data/fielddata.csv";
     public Board board;
+    private int doubleDiceCounter;
+    private int count = 0;
 
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -73,7 +75,6 @@ public class Game {
     }
 
     public void runGameLoop() {
-        int count = 0;
         boolean continueGame = true;
 
         while (continueGame) {
@@ -117,14 +118,25 @@ public class Game {
 
     private void throwAndMove() {
         ui.displayMessage("Det er: " + currentPlayer.toString() + " tur");
-        int result = 4;//dice.rollDiceSum();
+        int result = dice.rollDiceSum();
         ui.displayMessage(currentPlayer.getName()+" slog "+result );
         int newPosition = currentPlayer.updatePostion(result);
         Field f = board.getField(newPosition);
-        landAndAct(f);
+
 
         //after land and act, check if dice was double, call recursively
-
+        if (dice.isDouble) {
+            doubleDiceCounter++;
+            if (doubleDiceCounter < 3) {
+                ui.displayMessage(currentPlayer.getName()+" har en extra tur");
+                count--;
+            } else {
+                ui.displayMessage(currentPlayer.getName()+" har to ens");
+                f = board.getField(31);
+                doubleDiceCounter = 0;
+            }
+        }
+        landAndAct(f);
     }
 
     private void landAndAct(Field f) {
