@@ -20,7 +20,7 @@ public class Prison extends Field implements IOption{
         if(p.getWildcard()){
             useWildcard = ui.promptBinary("Vil du bruge dit wildcard? (Y/N)");
 
-            // Check if player uses wildcard
+            // Check if player uses wildcard - override and return message
             if (useWildcard){
                 msg = "\nDu har kontakter hos Politiet og løslades.";
                 p.setWildcard = false;
