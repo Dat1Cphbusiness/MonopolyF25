@@ -125,6 +125,7 @@ public class Game {
         ui.displayMessage(currentPlayer.getName() + " slog " + result);
         int newPosition = currentPlayer.updatePostion(result);
         Field f = board.getField(newPosition);
+
         if(dice.getIsDouble()){
             doubleDiceCounter++;
             if(doubleDiceCounter < 3){
@@ -138,6 +139,8 @@ public class Game {
         } else {
             doubleDiceCounter = 0;
         }
+
+
         landAndAct(f);
 
 

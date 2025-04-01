@@ -6,11 +6,11 @@
 
   --> [Yes] If "Er det 3 gang?" then
 
-     --> [No] "Fængsels-felt fundet"
+     --> [Yes] "Fængsels-felt fundet"
      --> "LandAndAct"
      else
-      --> [Yes] "Du får en tur mere"
-      --> [Yes] "LandAndAct"
+      --> [No] "Du får en tur mere"
+      -->  "LandAndAct"
       Endif
   else
    --> [No]  "LandAndAct"
