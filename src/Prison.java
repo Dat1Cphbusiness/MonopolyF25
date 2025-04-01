@@ -16,7 +16,7 @@ public class Prison extends Field implements IOption{
         String msg = super.onLand(p);
         msg += "\nDu er arresteret, og skal i fængsel";
 
-        // Check if player has wildcard
+ /*       // Check if player has wildcard
         if(p.getWildcard()){
             useWildcard = ui.promptBinary("Vil du bruge dit wildcard? (Y/N)");
 
@@ -34,10 +34,10 @@ public class Prison extends Field implements IOption{
             }
         }
         // Move player to field 31 - "Visit"
-        p.updatePostion(31);
+        p.moveToPostion(31);
         msg += "\n Næste gang det bliver din tur, kan du vælge om du vil betale dig ud, eller prøve et dobbeltslag." +
                 "\n når du har siddet over i tre omgange er du løsladt.";
-
+*/
         return msg;
     }
 }
