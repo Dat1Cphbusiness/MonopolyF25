@@ -133,15 +133,16 @@ public class Game {
 
        if (f.getOption() != null){
            response =  ui.promptBinary(msg);
-                }else{
+           if(response){
+               msg= f.onAccept(currentPlayer);
+           }else {
+               msg= f.onReject(currentPlayer);
+           }
+       }else{
            ui.displayMessage(msg);
         }
 
-       if(response){
-          msg= f.onAccept(currentPlayer);
-       }else {
-          msg= f.onReject(currentPlayer);
-       }
-        ui.displayMessage(msg);
+
+
     }
 }

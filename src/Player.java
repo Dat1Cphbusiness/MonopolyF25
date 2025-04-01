@@ -22,7 +22,6 @@ public class Player {
         }
 
         return this.position;
-
     }
 
     public void receive (int amount){

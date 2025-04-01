@@ -18,13 +18,13 @@ public class Property extends Field implements IOption{
 
         String msg = super.onLand(p);
         if (owner == null){
-            msg += "\nVil du købe? (Y/N):";
-            setOption ("buy");
+            msg += "\nVil du købe? (Y/N): ";
+            setOption("buy");
 
         } else if (owner != null && !p.equals(owner)) {
-            msg += "du skal betale " + getIncome();
-            //p.pay(getIncome());
-
+            msg += "\nDu skal betale " + getIncome() + " til " + owner.getName();
+            p.pay(getIncome(), owner);
+            setOption(null);
         }
         return msg;
     }
@@ -36,12 +36,18 @@ public class Property extends Field implements IOption{
     }
     @Override
     public String onAccept(Player p) {
+        if(getOption().equals("buy")){
+            p.buyProperty(Property.this);
+            this.owner = p;
+            //checkForMonopoly();
+            return "Du har nu købt " + super.toString();
+        }
         return super.onAccept(p);
     }
 
     @Override
     public String onReject(Player p) {
-        return super.onReject(p);
+        return p + " afvist at købe " + super.toString();
     }
 
     public Player getOwner(){
