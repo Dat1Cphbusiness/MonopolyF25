@@ -28,7 +28,8 @@ public class Plot extends Property{
         if(getOption().equals("build")){
             buildings++;
             //p.build(5000)
-            
+            String msg = "Du har bygget på grunden. Der står nu " + getBuildings();
+            return msg;
         }
 
         //checkForMonopoly();//tjekker om købet skabte et monopol og sætter isMonopolized til true
