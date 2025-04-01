@@ -1,5 +1,7 @@
 public class Plot extends Property{
 
+    private int buildings;
+
     public Plot(int ID, String label, int cost, int income, int seriesID) {
         super(ID, label, cost, income, seriesID);
     }
@@ -11,15 +13,7 @@ public class Plot extends Property{
 
     @Override
     public String onLand(Player p) {
-      /*
 
-            p lands on plot
-            if p is owner
-            check if monopolized
-            give option to build
-            if accepted = build;
-
-       */
 
         //return super.onLand(p);
 
@@ -35,10 +29,20 @@ public class Plot extends Property{
 
     @Override
     public String onAccept(Player p) {
+        String msg =super.onAccept(p);
 
-
+        if(this.getOption().equals("build")){
+            buildings++;
+            msg += "Du har bygget";
+            //p.build(4000);
+        }
         //checkForMonopoly();//tjekker om købet skabte et monopol og sætter isMonopolized til true
-        return super.onAccept(p);
+        return msg;
+
+    }
+
+    public int getBuildings() {
+        return buildings;
     }
 
     @Override

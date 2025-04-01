@@ -34,7 +34,8 @@ public class Property extends Field implements IOption{
         }
         return msg;
     }
-    protected void checkForMonopoly(Player p){
+
+    protected boolean checkForMonopoly(Player p){
         int seriesSize = 3;
         switch (this.seriesID) {
             case 0:
@@ -60,10 +61,12 @@ public class Property extends Field implements IOption{
         if(deedsInSeries.size() == seriesSize) {
             for(Property pr: deedsInSeries) {
                 pr.isMonopolized = true;
-                ui.displayMessage("Du har monopoly!");
+
 
             }
+            return true;
         }
+        return false;
     }
 
 
