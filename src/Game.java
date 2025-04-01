@@ -16,6 +16,8 @@ public class Game {
     private String cardDataPath = "data/carddata.csv";
     private String fieldDataPath = "data/fielddata.csv";
     public Board board;
+    private static int doubleDiceCounter = 0;
+    private static int turnCount = 0;
 
     public Game(String name, int maxPlayers){
         this.name = name;
@@ -73,16 +75,15 @@ public class Game {
     }
 
     public void runGameLoop() {
-        int count = 0;
         boolean continueGame = true;
 
         while (continueGame) {
-            if (count == players.size()) {
-                count=0;
+            if (turnCount == players.size()) {
+                turnCount=0;
             }
-            currentPlayer = players.get(count);
+            currentPlayer = players.get(turnCount);
             this.throwAndMove();
-            count++;
+            turnCount++;
             continueGame = ui.promptBinary("Fortsæt? (Y/N): ");
         }
     }
@@ -98,22 +99,6 @@ public class Game {
         }
     }
 
-
-    public void endSession() {
-        ArrayList<String> playerData = new ArrayList<>();
-
-     //serialiserer player objekterner
-        for(Player p: players){
-
-          String s = p.toString();
-          playerData.add(s);
-
-      }
-        //Test om promptChoice virker
-        //ui.displayList(ui.promptChoice(playerData, 3, "vælg en spiller"), "Din spiller liste");
-        io.saveData(playerData, "data/playerData.csv", "Name, Score");
-        ui.displayMessage("Spillet er gemt og afsluttet.");
-    }
 
     private void throwAndMove() {
         ui.displayMessage("Det er: " + currentPlayer.toString() + " tur");
@@ -143,5 +128,21 @@ public class Game {
           msg= f.onReject(currentPlayer);
        }
         ui.displayMessage(msg);
+    }
+
+    public void endSession() {
+        ArrayList<String> playerData = new ArrayList<>();
+
+        //serialiserer player objekterner
+        for(Player p: players){
+
+            String s = p.toString();
+            playerData.add(s);
+
+        }
+        //Test om promptChoice virker
+        //ui.displayList(ui.promptChoice(playerData, 3, "vælg en spiller"), "Din spiller liste");
+        io.saveData(playerData, "data/playerData.csv", "Name, Score");
+        ui.displayMessage("Spillet er gemt og afsluttet.");
     }
 }
