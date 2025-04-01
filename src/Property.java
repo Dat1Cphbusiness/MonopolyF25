@@ -22,7 +22,7 @@ public class Property extends Field implements IOption{
             setOption("buy");
 
         } else if (owner != null && !p.equals(owner)) {
-            msg += "\nDu skal betale " + getIncome() + " til " + owner.getName();
+            msg += "\nDu skal betale " + getIncome() + " kr. til " + owner.getName();
             p.pay(getIncome(), owner);
             setOption(null);
         }

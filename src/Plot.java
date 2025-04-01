@@ -28,7 +28,7 @@ public class Plot extends Property{
         if(getOption().equals("build")){
             buildings++;
             //p.build(5000)
-            String msg = "Du har bygget på grunden. Der står nu " + getBuildings();
+            String msg = "Du har bygget på grunden. Der står nu " + getBuildings() + " bygninger i alt";
             return msg;
         }
 
