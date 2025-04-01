@@ -23,6 +23,8 @@ public class Tax extends Field implements IOption{
         return "Du har betalt: " + this.getCost() + "kr";
     }
 
+
+
     @Override
     public String onReject(Player p) {
 
