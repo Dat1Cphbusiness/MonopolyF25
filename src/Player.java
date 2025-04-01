@@ -69,5 +69,9 @@ public class Player {
         return name;
     }
 
+    public ArrayList<Property> getDeeds(){
+        return this.deeds;
+    }
+
 
 }

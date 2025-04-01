@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Property extends Field implements IOption{
     private Player owner;
     private int seriesID;
@@ -28,11 +30,43 @@ public class Property extends Field implements IOption{
         }
         return msg;
     }
-    protected void checkForMonopoly(){
+    protected boolean checkForMonopoly(Player p){
 
-        /*
-        * WRITE YOUR PSEUDOCODE HERE
-        * */
+        int seriesSize = 3;
+        seriesSize = getRequiredForMonopoly(this.seriesID);
+
+        ArrayList<Property> deedsInSeries = new ArrayList<>();
+
+        for(Property property: p.getDeeds()){
+            if(property.seriesID == this.seriesID){
+                deedsInSeries.add(property);
+            }
+        }
+
+        if(deedsInSeries.size() == seriesSize){
+            for(Property property: deedsInSeries){
+                property.isMonopolized = true;
+            }
+            return true;
+        }
+        return false;
+
+    }
+
+    private int getRequiredForMonopoly(int seriesID) {
+
+        switch(seriesID) {
+            case 1: // Færger
+                return 4;
+            case 2: // Bryggerier
+                return 2;
+            case 3: // Blå
+                return 2;
+            case 10: // Lilla
+                return 2;
+            default: // For alle andre serier skal der bruges 3 for at opnå monopol
+                return 3;
+        }
     }
     @Override
     public String onAccept(Player p) {
@@ -47,4 +81,10 @@ public class Property extends Field implements IOption{
     public Player getOwner(){
         return this.owner;
     }
+
+    public int getSeriesID() {
+
+        return this.seriesID;
+    }
+
 }
