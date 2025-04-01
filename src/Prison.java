@@ -34,7 +34,7 @@ public class Prison extends Field implements IOption{
             }
         }
         // Move player to field 31 - "Visit"
-        p.moveToPosition(31);
+        p.updatePostion(31);
         msg += "\n Næste gang det bliver din tur, kan du vælge om du vil betale dig ud, eller prøve et dobbeltslag." +
                 "\n når du har siddet over i tre omgange er du løsladt.";
 
