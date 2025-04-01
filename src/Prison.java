@@ -1,4 +1,7 @@
+import util.TextUI;
+
 public class Prison extends Field implements IOption{
+    private TextUI ui;
     // Attributes
 
     // Constructor
