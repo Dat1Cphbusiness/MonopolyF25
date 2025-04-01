@@ -21,7 +21,7 @@ public class Property extends Field implements IOption{
             msg += "\nVil du købe? (Y/N):";
             setOption ("buy");
 
-        } else if (owner != null && !p.equals(owner)) {
+        } else if (!p.equals(owner)) {
             msg += "du skal betale " + getIncome();
             //p.pay(getIncome());
 

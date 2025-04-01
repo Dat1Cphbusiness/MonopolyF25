@@ -3,15 +3,15 @@ public class Board {
     private Field[] fields;
 
 
-    public Board(String[] fielddata, String[] carddata){
+    public Board(String[] fielddata, String[] carddata) {
         fields = new Field[fielddata.length];
         createFields(fielddata);
 
-         Chance.cardDeck = new CardDeck(carddata);
+        Chance.cardDeck = new CardDeck(carddata);
     }
 
-    private void createFields(String[] data){
-        for(int i = 0; i < data.length; i++){
+    private void createFields(String[] data) {
+        for (int i = 0; i < data.length; i++) {
             String[] values = data[i].split(",");
             int fieldId = Integer.parseInt(values[0].trim());
             String fieldType = values[1].trim();
@@ -21,24 +21,33 @@ public class Board {
             int seriesID = Integer.parseInt(values[5].trim());
 
             Field f = null;//new Field(fieldId,fieldLabel,cost,income);
-            switch (fieldType){
-                case "Chance": f= new Chance(fieldId,fieldLabel);
-                break;
-                case "Tax": f = new Tax(fieldId,fieldLabel,cost);
-                break;
-                case "Plot": f = new Plot(fieldId,fieldLabel,cost,income,seriesID);
-                break;
-                case "ShippingLine":  f = new ShippingLine(fieldId,fieldLabel,cost,income,seriesID);
+            switch (fieldType) {
+                case "Chance":
+                    f = new Chance(fieldId, fieldLabel);
                     break;
-                case "Brewery":  f = new Brewery(fieldId,fieldLabel,cost,income,seriesID);
+                case "Tax":
+                    f = new Tax(fieldId, fieldLabel, cost);
                     break;
-                case "Visit":  f = new Visit(fieldId,fieldLabel);
+                case "Plot":
+                    f = new Plot(fieldId, fieldLabel, cost, income, seriesID);
                     break;
-                case "Parking":  f = new Parking(fieldId,fieldLabel);
+                case "ShippingLine":
+                    f = new ShippingLine(fieldId, fieldLabel, cost, income, seriesID);
                     break;
-                case "Start":  f = new Start(fieldId,fieldLabel,income);
+                case "Brewery":
+                    f = new Brewery(fieldId, fieldLabel, cost, income, seriesID);
                     break;
-                case "Prison":  f = new Prison(fieldId,fieldLabel,cost);
+                case "Visit":
+                    f = new Visit(fieldId, fieldLabel);
+                    break;
+                case "Parking":
+                    f = new Parking(fieldId, fieldLabel);
+                    break;
+                case "Start":
+                    f = new Start(fieldId, fieldLabel, income);
+                    break;
+                case "Prison":
+                    f = new Prison(fieldId, fieldLabel, cost);
                     break;
             }
 
@@ -48,8 +57,8 @@ public class Board {
         }
     }
 
-    public Field getField(int id){
-        return fields[id-1];
+    public Field getField(int id) {
+        return fields[id - 1];
     }
 
 
