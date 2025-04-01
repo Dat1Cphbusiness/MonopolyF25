@@ -5,7 +5,7 @@ public class Player {
     private Account playerAccount;
     private boolean hasPassedStart;
     private int position = 1;
-    private ArrayList<Property> deeds = new ArrayList<>();
+    protected ArrayList<Property> deeds = new ArrayList<>();
     
     public Player(String name, int balance){
         this.name = name;
@@ -68,6 +68,5 @@ public class Player {
     public String getName(){
         return name;
     }
-
 
 }
