@@ -36,7 +36,10 @@ public class Field {
         return option;
     }
 
-    public void setOption(String option){ this.option = option; }
+    public void setOption(String option){
+
+        this.option = option;
+    }
 
     public int getIncome() {
         return income;
@@ -45,4 +48,10 @@ public class Field {
     public int getCost() {
         return cost;
     }
+
+    public String getLabel() {
+
+        return this.label;
+    }
+
 }

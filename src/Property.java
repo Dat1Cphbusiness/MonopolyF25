@@ -21,6 +21,7 @@ public class Property extends Field implements IOption{
             msg += "\nVil du købe? (Y/N):";
             setOption ("buy");
 
+
         } else if (owner != null && !p.equals(owner)) {
             msg += "du skal betale " + getIncome();
             //p.pay(getIncome());
@@ -36,12 +37,21 @@ public class Property extends Field implements IOption{
     }
     @Override
     public String onAccept(Player p) {
-        return super.onAccept(p);
+
+        p.buyProperty(Property.this);
+        this.owner = p;
+        if(checkForMonopoly(p)){
+            String msg = "Du har nu monopol";
+            return "Du har købt " + super.getLabel() + " og " + msg;
+        }
+        return "Du har købt " + super.getLabel();
     }
 
     @Override
     public String onReject(Player p) {
-        return super.onReject(p);
+
+        String s = p.getName() + " afviste at købe " + super.getLabel();
+        return s;
     }
 
     public Player getOwner(){
