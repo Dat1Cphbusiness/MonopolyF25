@@ -102,10 +102,24 @@ public class Game {
 
     private void throwAndMove() {
         ui.displayMessage("Det er: " + currentPlayer.toString() + " tur");
-        int result =5;//dice.rollDiceSum();
+        int result = dice.rollDiceSum();
         ui.displayMessage(currentPlayer.getName()+" slog "+result );
         int newPosition = currentPlayer.updatePostion(result);
+
         Field f = board.getField(newPosition);
+        if (dice.isDouble){
+            doubleDiceCounter++;
+            if(doubleDiceCounter < 3){
+                ui.displayMessage("Du har slået 2 ens, du får en ekstra tur!");
+                turnCount -= 1;
+            } else {
+                ui.displayMessage("Du har slået 2 ens, 3 gange. Du ryger i fængsel, din SNYDER!");
+                doubleDiceCounter = 0;
+                f = board.getField(31);
+            }
+        }
+
+
         landAndAct(f);
 
         //after land and act, check if dice was double, call recursively
