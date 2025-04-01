@@ -117,7 +117,7 @@ public class Game {
 
     private void throwAndMove() {
         ui.displayMessage("Det er: " + currentPlayer.toString() + " tur");
-        int result = 4;//dice.rollDiceSum();
+        int result =5;//dice.rollDiceSum();
         ui.displayMessage(currentPlayer.getName()+" slog "+result );
         int newPosition = currentPlayer.updatePostion(result);
         Field f = board.getField(newPosition);
@@ -134,14 +134,14 @@ public class Game {
        if (f.getOption() != null){
            response =  ui.promptBinary(msg);
                 }else{
-        ui.displayMessage(msg);
+           ui.displayMessage(msg);
         }
 
        if(response){
-           f.onAccept(currentPlayer);
+          msg= f.onAccept(currentPlayer);
        }else {
-           f.onReject(currentPlayer);
+          msg= f.onReject(currentPlayer);
        }
+        ui.displayMessage(msg);
     }
-
 }

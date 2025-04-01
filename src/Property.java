@@ -16,20 +16,9 @@ public class Property extends Field implements IOption{
     @Override
     public String onLand(Player p) {
 
-        /*
-        p lands on property();
-        check if property is owned
-            -If yes, check if current player is the owner,
-                --if no, player needs to pay the current owner
-            -If no, ask if player wants to buy property
-                --if yes, check for player complete series and set monopolized = true
-         */
-
-        // return super.onLand(p);
-
         String msg = super.onLand(p);
         if (owner == null){
-            msg += "Vil du købe? (Y/N):";
+            msg += "\nVil du købe? (Y/N):";
             setOption ("buy");
 
         } else if (owner != null && !p.equals(owner)) {
