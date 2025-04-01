@@ -22,9 +22,10 @@ public class Property extends Field implements IOption{
             setOption ("buy");
 
 
-        } else if (owner != null && !p.equals(owner)) {
+        } else if (p != owner) {
             msg += "du skal betale " + getIncome();
-            //p.pay(getIncome());
+            p.pay(this.getIncome(), this.owner);
+            setOption (null);
 
         }
         return msg;
@@ -38,13 +39,20 @@ public class Property extends Field implements IOption{
     @Override
     public String onAccept(Player p) {
 
-        p.buyProperty(Property.this);
-        this.owner = p;
-        if(checkForMonopoly(p)){
-            String msg = "Du har nu monopol";
-            return "Du har købt " + super.getLabel() + " og " + msg;
+        String msg = "";
+
+        if (this.getOption().equals("buy")) {
+            p.buyProperty(this);
+            this.owner = p;
+            msg+= "Du har købt " + super.getLabel();
+
+            if (checkForMonopoly(p)) {
+                msg += "\n Du har nu monopol";
+
+            }
+            return msg;
         }
-        return "Du har købt " + super.getLabel();
+        return msg;
     }
 
     @Override
