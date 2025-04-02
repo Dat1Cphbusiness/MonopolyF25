@@ -3,10 +3,8 @@ import util.TextUI;
 public class Prison extends Field implements IOption{
     private TextUI ui;
     // Attributes
-
     // Constructor
     public Prison(int ID, String label, int cost) {
-
         super(ID, label, cost, 0);
     }
 

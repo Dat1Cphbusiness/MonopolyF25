@@ -7,8 +7,8 @@ public class Dice {
     private boolean isDouble = false;
 
     public int rollDiceSum(){
-        dice[0] = random.nextInt(1,7);
-        dice[1] = random.nextInt(1,7);
+        dice[0] = 3;//random.nextInt(1,7);
+        dice[1] = 3;// random.nextInt(1,7);
 
         if (dice[0] == dice[1]){
             isDouble = true;

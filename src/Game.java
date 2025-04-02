@@ -132,7 +132,7 @@ public class Game {
                 ui.displayMessage("Du slog to ens, du har fået en ekstra tur");
                 count--;
             } else {
-                ui.displayMessage("Du slog 2 ens igen! >:( Politiet hentede dig på din arbejdsplads, foran din chef og familie og du sidder nu fanget i Vestre fængsel, uden mulighed for besøg eller prøveløsladelse");
+                ui.displayMessage("Du slog 2 ens igen!");
                 doubleDiceCounter = 0;
                 f = board.getField(31);
             }

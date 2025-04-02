@@ -69,4 +69,7 @@ public class Player {
         return name;
     }
 
+    public int getBalance() {
+        return this.playerAccount.getBalance();
+    }
 }
